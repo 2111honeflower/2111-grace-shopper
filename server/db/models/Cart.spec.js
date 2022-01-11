@@ -1,6 +1,5 @@
 const {expect} = require('chai')
 const { db, models: { Cart } } = require('../index')
-//const seed = require('../../../script/seed');
 
 describe ("Cart Model", () =>{
   before(() => db.sync({ force: true }));
