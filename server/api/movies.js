@@ -1,5 +1,5 @@
-const router = require('express').Router()
-const { models: { Movie }} = require('../db')
+const router = require('express').Router();
+const { models: { Movie }} = require('../db');
 
 //GET /api/movies
 router.get('/', async (req, res, next) => {
@@ -11,4 +11,17 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-module.exports = router
+router.get('/:id', async (req, res, next) => {
+  try {
+    const movie = await Movie.findOne({
+      where: {
+        id: req.params.id,
+      }
+    });
+    res.json(movie);
+  } catch (error) {
+    next(error);
+  }
+})
+
+module.exports = router;
