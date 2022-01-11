@@ -21,37 +21,31 @@ describe ("Cart Model", () =>{
       expect(parseFloat(cart.status)).to.equal("Placed");
     });
 
-    // it("requires firstName, lastName, email", async () => {
-    //   const student = Student.build();
-    //   try {
-    //     await student.validate();
-    //     throw Error(
-    //       "validation should have failed without firstName, lastName, email"
-    //     );
-    //   } catch (err) {
-    //     expect(err.message).to.contain("firstName cannot be null");
-    //     expect(err.message).to.contain("lastName cannot be null");
-    //     expect(err.message).to.contain("email cannot be null");
-    //   }
-    // });
+    it("requires address", async () => {
+      const cart = Cart.build();
+      try {
+        await cart.validate();
+        throw Error(
+          "validation should have failed without address"
+        );
+      } catch (err) {
+        expect(err.message).to.contain("address cannot be null");
+      }
+    });
 
-    // it("firstName, lastName, email cannot be empty", async () => {
-    //   const student = Student.build({
-    //     firstName: "",
-    //     lastName: "",
-    //     email: ""
-    //   });
-    //   try {
-    //     await student.validate();
-    //     throw Error(
-    //       "validation should have failed with empty name and address"
-    //     );
-    //   } catch (err) {
-    //     expect(err.message).to.contain("Validation notEmpty on firstName");
-    //     expect(err.message).to.contain("Validation notEmpty on lastName");
-    //     expect(err.message).to.contain("Validation notEmpty on email");
-    //   }
-    // });
+    it("address cannot be empty", async () => {
+      const cart = Cart.build({
+        address: ""
+      });
+      try {
+        await cart.validate();
+        throw Error(
+          "validation should have failed with empty address"
+        );
+      } catch (err) {
+        expect(err.message).to.contain("Validation notEmpty on address");
+      }
+    });
 
     // it("*** email must be a valid email", async () => {
     //   const student = Student.build({
