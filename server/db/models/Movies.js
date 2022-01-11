@@ -16,13 +16,15 @@ const Movie = db.define('movie', {
     },
 
     description: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        defaultValue: 'Currently Unavailable'
     },
 
     genre: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        defaultValue: 'Unknown'
     },
-    
+
     price: {
         type: Sequelize.DECIMAL(10,2),
         allowNull: false,
