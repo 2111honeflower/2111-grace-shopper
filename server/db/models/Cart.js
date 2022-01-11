@@ -16,7 +16,6 @@ const Cart = db.define('cart', {
   },
   address: {
     type: Sequelize.STRING,
-    allowNull: false,
   },
   status: {
     type: Sequelize.STRING,
