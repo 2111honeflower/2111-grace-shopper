@@ -1,24 +1,21 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const axios = require('axios');
 
 const Cart = db.define('cart', {
   movieCount: {
-    // type: Sequelize.STRING,
-    // unique: true,
-    // allowNull: false
+    type: Sequelize.INTEGER,
   },
   totalPrice: {
-    // type: Sequelize.STRING,
+    type: Sequelize.FLOAT,
   },
   shippingPrice: {
-
+    type: Sequelize.FLOAT,
   },
   address: {
-
+    type: Sequelize.STRING
   },
   status: {
-
+    type: Sequelize.STRING,
   }
 })
 
