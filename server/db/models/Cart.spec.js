@@ -21,80 +21,11 @@ describe ("Cart Model", () =>{
       expect(parseFloat(cart.status)).to.equal("Placed");
     });
 
-    it("requires address", async () => {
-      const cart = Cart.build();
-      try {
-        await cart.validate();
-        throw Error(
-          "validation should have failed without address"
-        );
-      } catch (err) {
-        expect(err.message).to.contain("address cannot be null");
-      }
+    it("defaults movieCount, totalPrice, shippingPrice, and status if left blank", () => {
+      const cart = cart.build({});
+      expect(cart.movieCount).to.equal(0);
+      expect(cart.totalPrice).to.equal(0);
+      expect(cart.shippingPrice).to.equal(5.99);
+      expect(cart.status).to.equal('Open');
     });
-
-    it("address cannot be empty", async () => {
-      const cart = Cart.build({
-        address: ""
-      });
-      try {
-        await cart.validate();
-        throw Error(
-          "validation should have failed with empty address"
-        );
-      } catch (err) {
-        expect(err.message).to.contain("Validation notEmpty on address");
-      }
-    });
-
-    // it("*** email must be a valid email", async () => {
-    //   const student = Student.build({
-    //     firstName: "Krista",
-    //     lastName: "Naso",
-    //     email: "notAnEmail"
-    //   });
-    //   try {
-    //     await student.validate();
-    //     throw Error(
-    //       "validation should have failed with invalid email"
-    //     );
-    //   } catch (err) {
-    //     console.log(err.message)
-    //     expect(err.message).to.contain("Validation isEmail on email");
-    //   }
-    // });
-
-    // it("gpa must be a float between 0.0 and 4.0", async () => {
-    //   const student = {
-    //     firstName: "Sally",
-    //     lastName: "Ride",
-    //     email: "sallyride@nasa.gov",
-    //     gpa: 4.1
-    //   };
-    //   const overachiever = Student.build(student);
-    //   try {
-    //     await overachiever.save();
-    //     throw Error("validation should have failed with too high gpa");
-    //   } catch (err) {
-    //     expect(err.message).to.contain("Validation max on gpa");
-    //   }
-    //   student.gpa = -1;
-    //   const underachiever = Student.build(student);
-    //   try {
-    //     await underachiever.validate();
-    //     throw Error("validation should have failed with too low gpa");
-    //   } catch (err) {
-    //     expect(err.message).to.contain("Validation min on gpa");
-    //   }
-    // });
-
-    // it("default imageUrl if left blank", () => {
-    //   const student = Student.build({
-    //     firstName: "",
-    //     lastName: "",
-    //     email: ""
-    //   });
-    //   expect(student.imageUrl).to.be.a("string");
-    //   expect(student.imageUrl.length).to.be.greaterThan(1);
-    // });
   });
