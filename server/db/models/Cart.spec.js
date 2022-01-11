@@ -1,6 +1,6 @@
 const {expect} = require('chai')
 const { db, models: { Cart } } = require('../index')
-const seed = require('../../../script/seed');
+//const seed = require('../../../script/seed');
 
 describe ("Cart Model", () =>{
   before(() => db.sync({ force: true }));
@@ -10,13 +10,15 @@ describe ("Cart Model", () =>{
       const cart = await Cart.create({
         movieCount: 2,
         totalPrice: 45.95,
+        shippingPrice: 7.98,
         address: "123 Test Ave. Chicago, IL 60606",
+        status: "Placed"
       });
-      expect(student.firstName).to.equal("Sally");
-      expect(student.lastName).to.equal("Ride");
-      expect(student.imageUrl).to.equal("/images/sallyride.png");
-      expect(student.email).to.equal("sallyride@nasa.gov");
-      expect(parseFloat(student.gpa)).to.equal(3.8);
+      expect(cart.movieCount).to.equal(2);
+      expect(cart.totalPrice).to.equal(45.95);
+      expect(cart.shippingPrice).to.equal(7.99);
+      expect(cart.address).to.equal("123 Test Ave. Chicago, IL 60606");
+      expect(parseFloat(cart.status)).to.equal("Placed");
     });
 
     // it("requires firstName, lastName, email", async () => {
