@@ -18,8 +18,8 @@ export const fetchSingleUser = (id) => {
             // aliasing data as the variable name 'user'
             const { data: user } = await axios.get(`/api/users/${id}`)
             dispatch(getSingleUser(user))
-        } catch(e) {
-            console.log('fetchSingleUser thunk error!!', e)
+        } catch(err) {
+            console.log('fetchSingleUser thunk error!!', err)
         }
     }
 }
