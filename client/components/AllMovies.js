@@ -14,7 +14,19 @@ class AllMovies extends React.Component {
 
   render(){
     const movieData = this.props.movies;
-    const movieList =
+    const movieList = movieData.map(movie => (
+
+    ))
+
+    return (
+      <main>
+        <h2>Movie List</h2>
+        <div>
+          {movieData.length > 1 ? movieList : "No Movies Available"}
+        </div>
+      </main>
+
+    );
   }
 
 }
