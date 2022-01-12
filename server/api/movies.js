@@ -6,11 +6,12 @@ router.get('/', async (req, res, next) => {
   try {
     const movies = await Movie.findAll();
     res.json(movies);
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err);
   }
 })
 
+//GET /api/movies/:id
 router.get('/:id', async (req, res, next) => {
   try {
     const movie = await Movie.findOne({
@@ -19,8 +20,17 @@ router.get('/:id', async (req, res, next) => {
       }
     });
     res.json(movie);
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err);
+  }
+})
+
+//POST /api/movies
+router.post('/', async (req, res, next) =>{
+  try {
+    res.status(201).send(await Movie.create(req.body));
+  } catch (err) {
+    next(err);
   }
 })
 
