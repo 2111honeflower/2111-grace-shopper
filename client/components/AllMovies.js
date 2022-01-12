@@ -12,4 +12,20 @@ class AllMovies extends React.Component {
     }
   }
 
+  render(){
+    const movieData = this.props.movies;
+    const movieList =
+  }
+
 }
+
+const mapState = (state) => ({
+  movies: state.movies
+});
+
+const mapDispatch = (dispatch) => ({
+  getMovies: () => dispatch(fetchMovies())
+});
+
+
+export default connect(mapState, mapDispatch)(AllMovies);
