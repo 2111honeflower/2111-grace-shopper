@@ -19,7 +19,7 @@ export const fetchUsers = () => {
             const { data: users } = await axios.get('/api/users')
             dispatch(getUsers(users))
         } catch(err) {
-            console.log('fetchUsers thunk error!!', e)
+            console.log('fetchUsers thunk error!!', err)
         }
     }
 }
