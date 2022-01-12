@@ -6,12 +6,14 @@ import auth from './auth'
 import moviesReducer from './movies'
 import movieReducer from './singleMovie'
 import usersReducer from './users'
+import singleUserReducer from './user'
 
 const reducer = combineReducers({
   auth,
   movies: moviesReducer,
   movie: movieReducer,
   usersReducer,
+  singleUserReducer
 })
 
 const middleware = composeWithDevTools(
