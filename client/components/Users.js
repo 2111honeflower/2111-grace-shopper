@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchUsers } from '../store/users';
 
-class User extends React.Component {
+class Users extends React.Component {
     componentDidMount() {
         this.props.fetchUsers()
     }
@@ -24,3 +24,13 @@ class User extends React.Component {
         )
     }
 }
+
+const mapState = (state) => ({
+    users: state.users
+});
+
+const mapDispatch = (dispatch) => ({
+    fetchUsers: fetchUsers
+})
+
+export default connect(mapState, mapDispatch)(Users)
