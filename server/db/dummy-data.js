@@ -223,7 +223,39 @@ const users = [
   }
 ]
 
+const carts = [
+  {
+    movieCount: 4,
+    totalPrice: 3.96,
+    shippingPrice: 5.99,
+    address: "123 Main St. USA",
+    status: "Placed"
+  },
+  {
+    movieCount: 9,
+    totalPrice: 8.91,
+    shippingPrice: 5.99,
+    address: "Sesame Street",
+    status: "Open"
+  },
+  {
+    movieCount: 0,
+    totalPrice: 0,
+    shippingPrice: 0,
+    address: "456 Somewhere Lane, New York, New York",
+    status: "Open"
+  },
+  {
+    movieCount: 2,
+    totalPrice: 1.98,
+    shippingPrice: 5.99,
+    address: "123 Main St. USA",
+    status: "Open"
+  }
+]
+
 module.exports = {
   movies,
-  users
+  users,
+  carts
 }

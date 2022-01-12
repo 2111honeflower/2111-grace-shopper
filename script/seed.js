@@ -1,8 +1,9 @@
 const { green, red } = require("chalk");
 const { db } = require("../server/db");
-const { users, movies } = require('../server/db/dummy-data')
+const { users, movies, carts } = require('../server/db/dummy-data')
 const User = require('../server/db/models/User')
 const Movie = require('../server/db/models/Movie')
+const Cart = require('../server/db/models/Cart')
 
 const seed = async () => {
   try {
@@ -13,6 +14,9 @@ const seed = async () => {
     }));
     await Promise.all(movies.map(movie => {
       return Movie.create(movie);
+    }));
+    await Promise.all(carts.map(cart => {
+      return Cart.create(cart);
     }));
   } catch (err) {
     console.log(red(err));
