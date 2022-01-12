@@ -4,10 +4,12 @@ import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import auth from './auth'
 import moviesReducer from './movies'
+import movieReducer from './singleMovie'
 
 const reducer = combineReducers({
   auth,
-  movies: moviesReducer
+  movies: moviesReducer,
+  movie: movieReducer,
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
