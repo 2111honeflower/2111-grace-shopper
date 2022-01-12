@@ -9,9 +9,9 @@ router.post("/:id", async (req, res, next) => {
       status: "open"
     }})
     if (created) {
-      res.send(userCart)
+      res.json(userCart)
     } else {
-      res.send("Cannot have two open carts") // can we merge carts? or is this a case of please sign in?
+      res.json("Cannot have two open carts") // can we merge carts? or is this a case of please sign in?
     }
   } catch (err) {
     next(err)
@@ -24,7 +24,7 @@ router.get("/:id", async (req, res, next) => {
       cartId: req.params.id,
       status: "Open"
     }})
-    res.send(userCart)
+    res.json(userCart)
   } catch (err) {
     next(err)
   }
@@ -36,7 +36,7 @@ router.put("/:id", async (req, res, next) => {
       cartId: req.params.id,
       status: "Open"
     }})
-  res.send(await userCart.update(req.body))
+  res.json(await userCart.update(req.body))
   } catch (err) {
     next(err)
   }
@@ -48,7 +48,7 @@ router.get("/:id/:userId", async (req, res, next) => {
       userId: req.params.userId,
       status: "Open"
     }})
-    res.send(userCart)
+    res.json(userCart)
   } catch (err) {
     next(err)
   }
@@ -60,7 +60,7 @@ router.put("/:id/:userId", async (req, res, next) => {
       userId: req.params.userId,
       status: "Open"
     }})
-  res.send(await userCart.update(req.body))
+  res.json(await userCart.update(req.body))
   } catch (err) {
     next(err)
   }
