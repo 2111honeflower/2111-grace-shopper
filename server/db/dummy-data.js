@@ -180,10 +180,50 @@ const movies = [
 
 const users = [
   {
-
+    userName: "Roger Ebert",
+    password: "Roger_pw",
+    email: "moviebuff@email.com",
+    isAdmin: false
+  },
+  {
+    userName: "Gene Shalit",
+    password: "Gene_pw",
+    email: "mustache@todayshow.com",
+    isAdmin: false
+  },
+  {
+    userName: "Paul Scheer",
+    password: "Paul_pw",
+    email: "tallJohnSheer@hdtgm.com",
+    isAdmin: false
+  },
+  {
+    userName: "Karina Longworth",
+    password: "Karina_pw",
+    email: "karina@youmustrememberthis.com",
+    isAdmin: false
+  },
+  {
+    userName: "Jamie Loftus",
+    password: "Jamie_pw",
+    email: "jamie@bechdelcastpodcast.com",
+    isAdmin: false
+  },
+  {
+    userName: "Admin1",
+    password: "Admin1_pw",
+    email: "admin1@moviestore.com",
+    isAdmin: true
+  },
+  {
+    userName: "Admin2",
+    password: "Admin2_pw",
+    email: "admin2@moviestore.com",
+    isAdmin: true
   }
 ]
 
 module.exports = {
-  movies
+  movies,
+  users
 }
