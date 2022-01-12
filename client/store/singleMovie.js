@@ -15,8 +15,8 @@ export const fetchSingleMovie = (id) => {
     try {
       const {data} = await axios.get(`/api/movies/${id}`);
       dispatch(setSingleMovie(data));
-    } catch (error){
-      console.log(error);
+    } catch (err){
+      console.log(err);
     }
   };
 };

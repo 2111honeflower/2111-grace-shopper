@@ -9,7 +9,7 @@ router.get('/', async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-})
+});
 
 //GET /api/movies/:id
 router.get('/:id', async (req, res, next) => {
@@ -23,7 +23,7 @@ router.get('/:id', async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-})
+});
 
 //POST /api/movies
 router.post('/', async (req, res, next) =>{
@@ -32,6 +32,6 @@ router.post('/', async (req, res, next) =>{
   } catch (err) {
     next(err);
   }
-})
+});
 
 module.exports = router;
