@@ -29,7 +29,7 @@ const mapState = (state) => ({
 });
 
 const mapDispatch = (dispatch) => ({
-  getStudent: (id) => dispatch(fetchSingleMovie(id))
+  getMovie: (id) => dispatch(fetchSingleMovie(id))
 });
 
 export default connect(mapState, mapDispatch)(SingleMovie);
