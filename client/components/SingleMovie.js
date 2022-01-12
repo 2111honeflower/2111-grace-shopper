@@ -11,7 +11,16 @@ class SingleMovie extends React.Component {
   }
 
   render(){
-
+    const movie = this.props.movie;
+    return (
+      <div>
+        <h3>{movie.name}</h3>
+        <img src={movie.imageUrl} />
+        <p>Description: {movie.description}</p>
+        <p>Genre: {movie.genre}</p>
+        <p>Price: ${movie.price}</p>
+      </div>
+    )
   }
 }
 

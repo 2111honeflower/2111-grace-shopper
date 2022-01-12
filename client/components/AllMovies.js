@@ -17,7 +17,6 @@ class AllMovies extends React.Component {
       <Link to={`/movies/${movie.id}`} key={movie.id} >
               <h3>{movie.name}</h3>
               <img src={movie.imageUrl} />
-              <p>Description: {movie.description}</p>
               <p>Genre: {movie.genre}</p>
               <p>Price: ${movie.price}</p>
       </Link>
