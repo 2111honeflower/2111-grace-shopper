@@ -10,7 +10,6 @@ export const setMovies = (movies) => ({
 });
 
 //thunks
-
 export const fetchMovies = () => {
   return async (dispatch) => {
     try {
