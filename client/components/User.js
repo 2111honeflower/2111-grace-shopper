@@ -10,9 +10,9 @@ class SingleUser extends React.Component {
 
     render() {
         return (
-            <div>
-              <h1>{this.props.userName}</h1>
-              <h2>{this.props.email}</h2>
+            <div>  
+              <p>Username: {this.props.userName}</p>
+              <p>Email: {this.props.email}</p>
             </div>
         )
     }
