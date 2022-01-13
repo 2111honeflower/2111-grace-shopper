@@ -52,7 +52,7 @@ router.get("/:id/movie-cart", async (req, res, next) => {
       cartId: req.params.id,
     }})
     const movies = movieIds.map(movie => {
-      Movie.findOne( {where: {
+      await Movie.findOne( {where: {
         movieId: movie.movieId
       }
     })
