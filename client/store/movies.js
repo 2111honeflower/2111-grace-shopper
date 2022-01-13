@@ -7,7 +7,7 @@ const DELETE_MOVIE = 'DELETE_MOVIE'
 //action creators
 export const setMovies = (movies) => ({
   type: SET_MOVIES,
-  movies
+  movies,
 });
 
 const _deleteMovie = (movie) => ({
@@ -19,13 +19,14 @@ const _deleteMovie = (movie) => ({
 export const fetchMovies = () => {
   return async (dispatch) => {
     try {
-      const {data} = await axios.get('/api/movies');
+      const { data } = await axios.get('/api/movies');
       dispatch(setMovies(data));
     } catch (err){
       console.log(err);
     }
   };
 };
+
 
 export const deleteMovie = (id) => {
   return async (dispatch) => {
@@ -37,6 +38,18 @@ export const deleteMovie = (id) => {
     }
   };
 };
+
+
+export const fetchCartMovies = (id) => {
+  return async (dispatch) => {
+    try{
+      const { data } = await axios.get(`/api/${id}/movie-cart`)
+      dispatch(setMovies(data))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
 
 
 const initialState = [];

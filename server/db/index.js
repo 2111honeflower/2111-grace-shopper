@@ -13,7 +13,7 @@ User.hasMany(Cart);
 Cart.belongsTo(User);
 
 Movie.belongsToMany(Cart, {through: 'Movie_Cart'});
-Cart.hasMany(Movie);
+Cart.belongsToMany(Movie, {through: 'Movie_Cart'});
 
 
 module.exports = {
