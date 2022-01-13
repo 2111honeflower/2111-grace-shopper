@@ -52,7 +52,7 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
   getMovies: () => dispatch(fetchMovies()),
-  deleteCampus: (id) => dispatch(deleteMovie(id))
+  deleteMovie: (id) => dispatch(deleteMovie(id))
 });
 
 
