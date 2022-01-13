@@ -1,7 +1,6 @@
 const { models: { Movie, Cart }} = require('../db');
 const router = require("express").Router()
 
-
 //GUEST
 
 router.post("/:id", async (req, res, next) => {
