@@ -23,7 +23,7 @@ const mapState = (state) => ({
 });
 
 const mapDispatch = (dispatch) => ({
-    fetchUsers:(id) => dispatch(fetchSingleUser(id))
+    fetchSingleUser:(id) => dispatch(fetchSingleUser(id))
 })
 
 export default connect(mapState, mapDispatch)(SingleUser)
