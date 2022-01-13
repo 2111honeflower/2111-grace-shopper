@@ -1,16 +1,15 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { fetchSingleMovie } from "../store/singleMovie";
+import { fetchSingleMovie } from '../store/singleMovie';
 
 class SingleMovie extends React.Component {
-
-  componentDidMount(){
+  componentDidMount() {
     this.props.getMovie(this.props.match.params.id);
   }
 
-  render(){
+  render() {
     const movie = this.props.movie;
     return (
       <div>
@@ -20,16 +19,16 @@ class SingleMovie extends React.Component {
         <p>Genre: {movie.genre}</p>
         <p>Price: ${movie.price}</p>
       </div>
-    )
+    );
   }
 }
 
 const mapState = (state) => ({
-  movie: state.movie
+  movie: state.movie,
 });
 
 const mapDispatch = (dispatch) => ({
-  getMovie: (id) => dispatch(fetchSingleMovie(id))
+  getMovie: (id) => dispatch(fetchSingleMovie(id)),
 });
 
 export default connect(mapState, mapDispatch)(SingleMovie);
