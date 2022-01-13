@@ -34,4 +34,15 @@ router.post('/', async (req, res, next) =>{
   }
 });
 
+//DELETE /api/movies/:id
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const movie = await Movie.findByPk(req.params.id);
+    await movie.destroy();
+    res.send(movie);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

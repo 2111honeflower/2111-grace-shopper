@@ -6,14 +6,14 @@ const SET_SINGLE_MOVIE = 'SET_SINGLE_MOVIE';
 //action creators
 export const setSingleMovie = (movie) => ({
   type: SET_SINGLE_MOVIE,
-  movie
+  movie,
 });
 
 //thunks
 export const fetchSingleMovie = (id) => {
   return async (dispatch) => {
     try {
-      const {data} = await axios.get(`/api/movies/${id}`);
+      const { data } = await axios.get(`/api/movies/${id}`);
       dispatch(setSingleMovie(data));
     } catch (err){
       console.log(err);
