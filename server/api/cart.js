@@ -1,4 +1,4 @@
-const { Cart } = require("../db")
+const { Cart } = require("../db/models")
 const router = require("express").Router()
 
 router.post("/:id", async (req, res, next) => {
