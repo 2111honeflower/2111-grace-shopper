@@ -15,11 +15,22 @@ export const fetchMovies = () => {
     try {
       const { data } = await axios.get('/api/movies');
       dispatch(setMovies(data));
-    } catch (error) {
-      console.log(error);
+    } catch (err){
+      console.log(err);
     }
   };
 };
+
+export const fetchCartMovies = (id) => {
+  return async (dispatch) => {
+    try{
+      const { data } = await axios.get(`/api/${id}/movie-cart`)
+      dispatch(setMovies(data))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
 
 const initialState = [];
 
