@@ -1,67 +1,76 @@
-const { models: { Movie, Cart }} = require('../db');
-const router = require("express").Router()
+const {
+  models: { Movie, Cart },
+} = require('../db');
+const router = require('express').Router();
 
 //GUEST
 
-router.post("/:id", async (req, res, next) => {
+router.post('/:id', async (req, res, next) => {
   try {
-    const [ userCart, created ] = await Cart.findOrCreate( {where: {
-      id: req.params.id,
-      status: "open"
-    }})
+    const [userCart, created] = await Cart.findOrCreate({
+      where: {
+        id: req.params.id,
+        status: 'open',
+      },
+    });
     if (created) {
-      res.json(userCart)
+      res.json(userCart);
     } else {
-      res.json("Cannot have two open carts") // can we merge carts? or is this a case of please sign in?
+      res.json('Cannot have two open carts'); // can we merge carts? or is this a case of please sign in?
     }
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
+});
 
-router.get("/:id", async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
-    const userCart = await Cart.findOne( {where: {
-      id: req.params.id,
-      status: "Open"
-    }})
-    res.json(userCart)
+    const userCart = await Cart.findOne({
+      where: {
+        id: req.params.id,
+        status: 'Open',
+      },
+    });
+    res.json(userCart);
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
+});
 
-router.put("/:id", async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
   try {
-    const userCart = await Cart.findOne( {where: {
-      id: req.params.id,
-      status: "Open"
-    }})
-  res.json(await userCart.update(req.body))
+    const userCart = await Cart.findOne({
+      where: {
+        id: req.params.id,
+        status: 'Open',
+      },
+    });
+    res.json(await userCart.update(req.body));
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
-
+});
 
 //MOVIE-CART
-router.get("/:id/movie-cart", async (req, res, next) => {
+router.get('/:id/movie-cart', async (req, res, next) => {
   try {
-    const movieIds = await Movie-Cart.findAll( {where: {
-      cartId: req.params.id,
-    }})
-    const movies = movieIds.map(movie => {
-      await Movie.findOne( {where: {
-        movieId: movie.movieId
-      }
-    })
-    })
-    res.json(movies)
+    const movieIds = await Movie_Cart.findAll({
+      where: {
+        cartId: req.params.id,
+      },
+    });
+    const movies = await movieIds.map((movie) => {
+      Movie.findOne({
+        where: {
+          movieId: movie.movieId,
+        },
+      });
+    });
+    res.json(movies);
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
-
+});
 
 //MEMBER
 
