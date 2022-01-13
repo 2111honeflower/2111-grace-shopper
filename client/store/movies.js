@@ -12,7 +12,7 @@ export const setMovies = (movies) => ({
   movies,
 });
 
-const _deleteMovie = (movie) => ({
+export const _deleteMovie = (movie) => ({
   type: DELETE_MOVIE,
   movie
 });
@@ -40,6 +40,10 @@ export const createMovie = (movie) => {
       const { data: created } = await axios.post("/api/movies", movie);
       dispatch(_createMovie(created));
     } catch (err){
+      console.log(err)
+    }
+  }
+}
 
 export const deleteMovie = (id) => {
   return async (dispatch) => {
