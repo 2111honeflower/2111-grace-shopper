@@ -45,4 +45,14 @@ router.delete('/:id', async (req, res, next) => {
   }
 });
 
+//PUT /api/movies/:id
+router.put('/:id', async (req, res, next) => {
+  try {
+    const movie = await Movie.findByPk(req.params.id);
+    res.json(await movie.update(req.body));
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
