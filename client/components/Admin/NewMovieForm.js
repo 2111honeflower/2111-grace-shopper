@@ -1,32 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { updateMovie } from "../store/singleMovie";
+import { createMovie } from "../../store/movies";
 
-class UpdateMovieForm extends React.Component {
-  constructor(props){
-    super(props);
+class NewMovieForm extends React.Component {
+  constructor(){
+    super();
     this.state = {
-      name: '',
-      price: null, //IS NULL CORRECT?
+      name: "",
+      price: null, //IS THIS CORRECT STARTING VALUE?
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.movie.name !== this.props.movie.name ||
-      prevProps.movie.price !== this.props.movie.price) {
-      this.setState({
-        name: this.props.movie.name || '',
-        price: this.props.movie.price || ''
-      });
-    }
-  }
-
   handleSubmit (event) {
     event.preventDefault();
-    this.props.updateMovie({ ...this.props.movie, ...this.state });
+    this.props.createMovie({...this.state});
+    this.setState({
+      name: "",
+      price: null //USED AGAIN HERE
+    });
   }
 
   handleChange(event) {
@@ -37,7 +31,7 @@ class UpdateMovieForm extends React.Component {
     const { name, price } = this.state;
     return (
       <div>
-        <h3>Update Movie:</h3>
+        <h2>Add New Movie:</h2>
         <form onSubmit={this.handleSubmit}>
             <label htmlFor="name">Name:</label>
             <input type="text" name="name" onChange={this.handleChange} value={name} />
@@ -46,16 +40,12 @@ class UpdateMovieForm extends React.Component {
             <button type="submit">Submit</button>
         </form>
       </div>
-    )
+    );
   }
 }
 
-const mapState = (state) => ({
-  movie: state.movie
-});
-
 const mapDispatch = (dispatch) => ({
-  updateMovie: (movie) => dispatch(updateMovie(movie))
+  createMovie: (movie) => dispatch(createMovie(movie)),
 });
 
-export default connect(mapState, mapDispatch)(UpdateMovieForm);
+export default connect(null, mapDispatch)(NewMovieForm);

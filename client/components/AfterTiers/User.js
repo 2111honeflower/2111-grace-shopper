@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchSingleUser } from '../store/user';
+import { fetchSingleUser } from '../../store/user';
 
 class SingleUser extends React.Component {
     componentDidMount() {
@@ -10,7 +10,7 @@ class SingleUser extends React.Component {
 
     render() {
         return (
-            <div>  
+            <div>
               <p>Username: {this.props.userName}</p>
               <p>Email: {this.props.email}</p>
             </div>
