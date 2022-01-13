@@ -6,11 +6,12 @@ router.get('/', async (req, res, next) => {
   try {
     const movies = await Movie.findAll();
     res.json(movies);
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err);
   }
 })
 
+//GET /api/movies/:id
 router.get('/:id', async (req, res, next) => {
   try {
     const movie = await Movie.findOne({
@@ -19,9 +20,20 @@ router.get('/:id', async (req, res, next) => {
       }
     });
     res.json(movie);
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err);
   }
 })
+
+//DELETE /api/movies/:id
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const movie = await Movie.findByPk(req.params.id);
+    await movie.destroy();
+    res.send(movie);
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
