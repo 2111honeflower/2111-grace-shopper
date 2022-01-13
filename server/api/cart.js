@@ -1,7 +1,6 @@
 const { Cart } = require("../db")
 const router = require("express").Router()
 
-cd 
 router.post("/:id", async (req, res, next) => {
   try {
     const [ userCart, created ] = await Cart.findOrCreate( {where: {
