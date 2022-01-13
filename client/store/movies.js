@@ -2,7 +2,9 @@ import axios from 'axios';
 
 //action types
 const SET_MOVIES = 'SET_MOVIES';
+const CREATE_MOVIE = 'CREATE_MOVIE';
 const DELETE_MOVIE = 'DELETE_MOVIE'
+
 
 //action creators
 export const setMovies = (movies) => ({
@@ -14,6 +16,11 @@ const _deleteMovie = (movie) => ({
   type: DELETE_MOVIE,
   movie
 });
+
+export const _createMovie = (movie) => ({
+  type: CREATE_MOVIE,
+  movie
+})
 
 //thunks
 export const fetchMovies = () => {
@@ -27,6 +34,12 @@ export const fetchMovies = () => {
   };
 };
 
+export const createMovie = (movie) => {
+  return async (dispatch) => {
+    try {
+      const { data: created } = await axios.post("/api/movies", movie);
+      dispatch(_createMovie(created));
+    } catch (err){
 
 export const deleteMovie = (id) => {
   return async (dispatch) => {
@@ -58,6 +71,8 @@ export default function moviesReducer(state = initialState, action) {
   switch (action.type) {
     case SET_MOVIES:
       return action.movies;
+    case CREATE_MOVIE:
+      return [...state, action.movie];
     case DELETE_MOVIE:
       return state.filter(movie => movie.id !== action.movie.id);
     default:
