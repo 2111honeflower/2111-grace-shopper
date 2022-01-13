@@ -1,11 +1,13 @@
-const { Cart } = require("../db/models")
+const { models: { Movie, Cart }} = require('../db');
 const router = require("express").Router()
 
+
+//GUEST
 
 router.post("/:id", async (req, res, next) => {
   try {
     const [ userCart, created ] = await Cart.findOrCreate( {where: {
-      cartId: req.params.id,
+      id: req.params.id,
       status: "open"
     }})
     if (created) {
@@ -21,7 +23,7 @@ router.post("/:id", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const userCart = await Cart.findOne( {where: {
-      cartId: req.params.id,
+      id: req.params.id,
       status: "Open"
     }})
     res.json(userCart)
@@ -33,7 +35,7 @@ router.get("/:id", async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
   try {
     const userCart = await Cart.findOne( {where: {
-      cartId: req.params.id,
+      id: req.params.id,
       status: "Open"
     }})
   res.json(await userCart.update(req.body))
@@ -42,9 +44,30 @@ router.put("/:id", async (req, res, next) => {
   }
 })
 
+
+//MEMBER
+
+router.post("/:id/:userId", async (req, res, next) => {
+  try {
+    const [ userCart, created ] = await Cart.findOrCreate( {where: {
+      userId: req.params.userId,
+      id: req.params.id,
+      status: "open"
+    }})
+    if (created) {
+      res.json(userCart)
+    } else {
+      res.json("Cannot have two open carts") // can we merge carts? or is this a case of please sign in?
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.get("/:id/:userId", async (req, res, next) => {
   try {
     const userCart = await Cart.findOne( {where: {
+      id: req.params.id,
       userId: req.params.userId,
       status: "Open"
     }})
@@ -57,6 +80,7 @@ router.get("/:id/:userId", async (req, res, next) => {
 router.put("/:id/:userId", async (req, res, next) => {
   try {
     const userCart = await Cart.findOne( {where: {
+      id: req.params.id,
       userId: req.params.userId,
       status: "Open"
     }})
@@ -68,3 +92,4 @@ router.put("/:id/:userId", async (req, res, next) => {
 //is cart with id when guest, and then /:id/:userId when logged in?
 //does cart model need guest id?
 //no deleting of cart since we will use 'placed' to 'clear cart '
+module.exports = router;

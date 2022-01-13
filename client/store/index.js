@@ -7,13 +7,15 @@ import moviesReducer from './movies'
 import movieReducer from './singleMovie'
 import usersReducer from './users'
 import singleUserReducer from './user'
+import getCartReducer from './cart'
 
 const reducer = combineReducers({
   auth,
   movies: moviesReducer,
   movie: movieReducer,
   usersReducer,
-  singleUserReducer
+  singleUserReducer,
+  getCartReducer
 })
 
 const middleware = composeWithDevTools(
