@@ -13,10 +13,10 @@ export class Cart extends React.Component {
     this.props.loadMovies(this.props.match.params.id);
   }
 
+
   render() {
     const cartMovies = this.props.movies;
     const cart = this.props.thisCart;
-
     return (
       <div>
         <h2>CART:</h2>
@@ -31,9 +31,10 @@ export class Cart extends React.Component {
             </div>;
           })}
         </div>
-        <p>TOTAL:{cart.totalPrice}</p>
-        <p>QUANTITY:{cart.movieCount}</p>
-        <p>SHIPPING:{cart.shippingPrice}</p>
+        {/* <p>SUB-TOTAL:{cart.totalPrice}</p> */}
+        <Link to={`/cart/${this.props.match.params.id}/checkout`}>
+        <button type="submit">Checkout</button>
+        </Link>
       </div>
     );
   }
