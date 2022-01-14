@@ -17,7 +17,6 @@ export class Cart extends React.Component {
   render() {
     const cartMovies = this.props.movies;
     const cart = this.props.thisCart;
-console.log(this.props.thisCart, "here")
     return (
       <div>
         <h2>CART:</h2>
