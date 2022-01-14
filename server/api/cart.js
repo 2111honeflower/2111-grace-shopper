@@ -9,8 +9,8 @@ router.post('/:id', async (req, res, next) => {
   try {
     const [userCart, created] = await Cart.findOrCreate({
       where: {
-        id: req.params.id,
         status: 'open',
+        userId: req.params.userId
       },
     });
     if (created) {
