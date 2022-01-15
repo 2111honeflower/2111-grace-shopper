@@ -5,6 +5,7 @@ const db = require('./db');
 const User = require('./models/User');
 const Cart = require('./models/Cart');
 const Movie = require('./models/Movie');
+const Movie_Cart = require('./models/Movie-Cart')
 
 
 
@@ -22,5 +23,6 @@ module.exports = {
     User,
     Cart,
     Movie,
+    Movie_Cart
   },
 };
