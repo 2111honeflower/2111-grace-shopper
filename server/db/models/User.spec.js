@@ -4,6 +4,8 @@ const {expect} = require('chai')
 const { db, models: { User } } = require('../index')
 const jwt = require('jsonwebtoken');
 const seed = require('../../../script/seed');
+const dotenv = require('dotenv');
+dotenv.config();
 
 describe('User model', () => {
   let users;
