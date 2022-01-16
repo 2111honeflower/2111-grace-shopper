@@ -75,11 +75,18 @@ nav img {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  width: 25rem
+}
+
+.product img {
+  width: 11rem;
+  height: 14rem
 }
 
 #delete-button {
   height: 2rem;
   width: 2rem;
+  margin: 0 3rem 0 0
 }
 
 #all-movies {
@@ -113,8 +120,8 @@ nav img {
 }
 
 .single-movie img {
-  width: 15rem;
-  height: 20rem;
+  width: 35rem;
+  height: 45rem;
 }
 #single-movie-details {
   display: flex;
