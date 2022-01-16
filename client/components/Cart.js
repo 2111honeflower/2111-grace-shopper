@@ -9,31 +9,40 @@ export class Cart extends React.Component {
     super(props);
   }
   componentDidMount() {
-    this.props.loadCart(this.props.match.params.id);
-    this.props.loadMovies(this.props.match.params.id);
+    // this.props.loadCart(this.props.match.params.id);
+    // this.props.loadMovies(this.props.match.params.id);
   }
 
-
   render() {
-    const cartMovies = this.props.movies;
-    const cart = this.props.thisCart;
+    const cartMovies = JSON.parse(localStorage.getItem("products"));
+    //const cart = this.props.thisCart;
+    console.log(cartMovies, "CART MOVIES");
     return (
       <div>
         <h2>CART:</h2>
-        <div>
+        <div id="cart">
           {cartMovies.map((movie) => {
-            <div key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>
-                <img src={movie.imageUrl} />
-                <h2>{movie.name}</h2>
-              </Link>
-              <p>${movie.price}</p>
-            </div>;
+            return (
+              <div className="cart-items" key={movie.id}>
+                <Link to={`/movies/${movie.id}`} className="product">
+                  <img src={movie.imageUrl} />
+                  &nbsp; &nbsp;
+                  <h3>{movie.name}</h3>
+                </Link>
+
+                  <h4>${movie.price}</h4>
+
+                  <h4>QUANTITY HERE</h4>
+
+                  <img src="https://www.shareicon.net/data/512x512/2016/09/10/827820_delete_512x512.png" id="delete-button"/>
+
+              </div>
+            );
           })}
         </div>
         {/* <p>SUB-TOTAL:{cart.totalPrice}</p> */}
         <Link to={`/cart/${this.props.match.params.id}/checkout`}>
-        <button type="submit">Checkout</button>
+          <button type="submit">Proceed to Checkout</button>
         </Link>
       </div>
     );
