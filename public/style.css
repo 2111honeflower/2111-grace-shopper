@@ -74,7 +74,7 @@ nav img {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: left;
   width: 25rem
 }
 
@@ -87,6 +87,23 @@ nav img {
   height: 2rem;
   width: 2rem;
   margin: 0 3rem 0 0
+}
+
+#checkout-button {
+  display: flex;
+  justify-content: right;
+  margin: 0 20rem 15rem 0;
+
+}
+#checkout-button button {
+  background-color: #2a9d8f;
+  border-radius: 2rem;
+  width: 13rem;
+  height: 6rem;
+  font-size: 1.25rem;
+  color:white;
+  font-weight:bold;
+
 }
 
 #all-movies {

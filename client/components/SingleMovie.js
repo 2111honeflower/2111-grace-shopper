@@ -18,7 +18,6 @@ class SingleMovie extends React.Component {
 
   addToCart() {
     let movie = this.props.movie;
-    console.log("MOVIE", movie);
     let products = [];
     if (localStorage.getItem("products")) {
       products = JSON.parse(localStorage.getItem("products"));
