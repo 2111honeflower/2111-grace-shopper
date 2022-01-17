@@ -74,19 +74,44 @@ nav img {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  width: 25rem
+  justify-content: left;
+  width: 25rem;
+  margin-right: 5rem
 }
 
 .product img {
   width: 11rem;
   height: 14rem
 }
-
 #delete-button {
+  height:2rem;
+  width: 2rem;
+  background-color: white;
+  text-align: center;
+  border: 0 solid white;
+  margin: 0 5rem 0 0;
+}
+#delete-button img {
   height: 2rem;
   width: 2rem;
-  margin: 0 3rem 0 0
+
+}
+
+#checkout-button {
+  display: flex;
+  justify-content: right;
+  margin: 0 20rem 15rem 0;
+
+}
+#checkout-button button {
+  background-color: #2a9d8f;
+  border-radius: 2rem;
+  width: 13rem;
+  height: 6rem;
+  font-size: 1.25rem;
+  color:white;
+  font-weight:bold;
+
 }
 
 #all-movies {
