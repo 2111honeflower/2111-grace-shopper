@@ -1,5 +1,5 @@
 const {
-  models: { Movie, Cart },
+  models: { Movie, Cart, Movie_Cart },
 } = require('../db');
 const router = require('express').Router();
 

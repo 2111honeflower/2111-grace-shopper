@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { authenticate } from "../store";
+import { authenticateLogin, authenticateSignup } from "../store";
 
 /**
  * COMPONENT
@@ -11,11 +11,19 @@ const AuthForm = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit} name={name}>
+        {name === "signup" &&
+          <div>
+            <label htmlFor="username">
+              <small>Username</small>
+            </label>
+            <input name="username" type="text" />
+          </div>
+        }
         <div>
-          <label htmlFor="username">
-            <small>Username</small>
+          <label htmlFor="email">
+            <small>Email</small>
           </label>
-          <input name="username" type="text" />
+          <input type="text" name="email" />
         </div>
         <div>
           <label htmlFor="password">
@@ -23,10 +31,6 @@ const AuthForm = (props) => {
           </label>
           <input name="password" type="password" />
         </div>
-        <label htmlFor="email">
-          <small>Email</small>
-        </label>
-        <input type="text" name="email" />
         <div>
           <button type="submit">{displayName}</button>
         </div>
@@ -59,7 +63,19 @@ const mapSignup = (state) => {
   };
 };
 
-const mapDispatch = (dispatch) => {
+const mapDispatchLogin = (dispatch) => {
+  return {
+    handleSubmit(evt) {
+      evt.preventDefault();
+      const formName = evt.target.name;
+      const password = evt.target.password.value;
+      const email = evt.target.email.value
+      dispatch(authenticateLogin(password, email, formName));
+    },
+  };
+};
+
+const mapDispatchSignup = (dispatch) => {
   return {
     handleSubmit(evt) {
       evt.preventDefault();
@@ -67,10 +83,10 @@ const mapDispatch = (dispatch) => {
       const username = evt.target.username.value;
       const password = evt.target.password.value;
       const email = evt.target.email.value
-      dispatch(authenticate(username, password, email, formName));
+      dispatch(authenticateSignup(username, password, email, formName));
     },
   };
 };
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm);
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm);
+export const Login = connect(mapLogin, mapDispatchLogin)(AuthForm);
+export const Signup = connect(mapSignup, mapDispatchSignup)(AuthForm);
