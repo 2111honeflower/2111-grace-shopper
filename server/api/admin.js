@@ -4,7 +4,7 @@ const {
 } = require('../db');
 
 // helper function for movie/user routes only accessible to admins
-export default async function isAdmin(req, res, next) {
+async function isAdmin(req, res, next) {
   const currentUser = await User.findOne({
     where: {
       isAdmin: true,
@@ -15,4 +15,7 @@ export default async function isAdmin(req, res, next) {
   }
 }
 
-module.exports = router;
+module.exports = {
+  router,
+  isAdmin
+};

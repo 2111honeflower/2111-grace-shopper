@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const { models: { User }} = require('../db')
-const isAdmin = require('./admin')
+const {isAdmin} = require('./admin')
 
 // GET /users
 router.get('/', isAdmin, async (req, res, next) => {
