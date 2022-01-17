@@ -1,5 +1,14 @@
 body {
-  font-family: sans-serif;
+  font-family: "Bungee Shade", cursive;
+  /*
+  'Special Elite', cursive;
+  'Slackey', cursive;
+  'Road Rage', cursive;
+  'Righteous', cursive;
+  'Permanent Marker', cursive;
+  'Dosis', sans-serif;
+  'Alfa Slab One', cursive;
+  'Bungee Shade', cursive; */
 }
 
 a {
@@ -18,4 +27,110 @@ nav a {
 form div {
   margin: 1em;
   display: inline-block;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: flex-end;
+  font-size: 2rem;
+  margin: 0 1.25rem 0 0;
+  height:2rem
+
+}
+nav img {
+  width:3rem;
+  height: 2.5rem
+}
+
+#header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: left;
+  font-size: 2.75rem;
+  margin: 0rem 2rem 0 2rem
+}
+#header h1 {
+  margin: 3rem;
+}
+#header img {
+  margin-top: 2rem
+}
+#cart {
+  margin: 4rem 20rem 4rem 20rem;
+  border: 0.25rem solid #2a9d8f;
+  font-family: "Special Elite", cursive;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+.product {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 25rem
+}
+
+.product img {
+  width: 11rem;
+  height: 14rem
+}
+
+#delete-button {
+  height: 2rem;
+  width: 2rem;
+  margin: 0 3rem 0 0
+}
+
+#all-movies {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.all-movies {
+  font-family: "Special Elite", cursive;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 1rem;
+  flex: 1 1 21rem;
+  width: 12rem;
+}
+.all-movies img {
+  width: 13rem;
+  height: 18rem;
+}
+
+.single-movie {
+  display: flex;
+  font-family: "Special Elite", cursive;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 3rem 0 0 0
+}
+
+.single-movie img {
+  width: 35rem;
+  height: 45rem;
+}
+#single-movie-details {
+  display: flex;
+  flex-direction: column;
+  width: 75rem;
+}
+.single-movie button{
+  width: 6rem;
+  height: 2rem;
+  border-radius: 2rem;
+  background-color: #2a9d8f
 }
