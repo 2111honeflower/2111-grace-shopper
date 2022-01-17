@@ -1,25 +1,31 @@
-const { green, red } = require("chalk");
-const { db } = require("../server/db");
-const { users, movies, carts } = require('../server/db/dummy-data')
-const User = require('../server/db/models/User')
-const Movie = require('../server/db/models/Movie')
-const Cart = require('../server/db/models/Cart')
+//const { green, red } = require("chalk");
+const { db } = require('../server/db');
+const { users, movies, carts } = require('../server/db/dummy-data');
+const User = require('../server/db/models/User');
+const Movie = require('../server/db/models/Movie');
+const Cart = require('../server/db/models/Cart');
 
 const seed = async () => {
   try {
     await db.sync({ force: true });
 
-    await Promise.all(users.map(user => {
-      return User.create(user);
-    }));
-    await Promise.all(movies.map(movie => {
-      return Movie.create(movie);
-    }));
-    await Promise.all(carts.map(cart => {
-      return Cart.create(cart);
-    }));
+    await Promise.all(
+      users.map((user) => {
+        return User.create(user);
+      })
+    );
+    await Promise.all(
+      movies.map((movie) => {
+        return Movie.create(movie);
+      })
+    );
+    await Promise.all(
+      carts.map((cart) => {
+        return Cart.create(cart);
+      })
+    );
   } catch (err) {
-    console.log(red(err));
+    console.log(err);
   }
 };
 
@@ -30,11 +36,11 @@ module.exports = seed;
 if (require.main === module) {
   seed()
     .then(() => {
-      console.log(green("Seeding success!"));
+      console.log('Seeding success!');
       db.close();
     })
-    .catch(err => {
-      console.error(red("Oh noes! Something went wrong!"));
+    .catch((err) => {
+      console.error('Oh noes! Something went wrong!');
       console.error(err);
       db.close();
     });
