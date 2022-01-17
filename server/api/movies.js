@@ -2,7 +2,7 @@ const router = require('express').Router();
 const {
   models: { Movie },
 } = require('../db');
-const isAdmin = require('./admin');
+const {isAdmin} = require('./admin');
 
 //GET /api/movies
 router.get('/', async (req, res, next) => {
