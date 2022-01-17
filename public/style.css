@@ -75,18 +75,26 @@ nav img {
   flex-direction: row;
   align-items: center;
   justify-content: left;
-  width: 25rem
+  width: 25rem;
+  margin-right: 5rem
 }
 
 .product img {
   width: 11rem;
   height: 14rem
 }
-
 #delete-button {
+  height:2rem;
+  width: 2rem;
+  background-color: white;
+  text-align: center;
+  border: 0 solid white;
+  margin: 0 5rem 0 0;
+}
+#delete-button img {
   height: 2rem;
   width: 2rem;
-  margin: 0 3rem 0 0
+
 }
 
 #checkout-button {

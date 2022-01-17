@@ -54,10 +54,10 @@ export class Cart extends React.Component {
                     <h4>QUANTITY HERE</h4>
 
 
-                    <button type="submit" onClick={(event) => this.handleClick(movie.id, event)}>
+                    <button type="submit" onClick={(event) => this.handleClick(movie.id, event)} id="delete-button">
                       <img
                         src="https://www.shareicon.net/data/512x512/2016/09/10/827820_delete_512x512.png"
-                        id="delete-button"
+
                       />
                     </button>
 
