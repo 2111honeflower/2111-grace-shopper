@@ -38,7 +38,8 @@ export const fetchCart = (cartId) => {
 export const addingToCart = (movieId) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(`/api/cart/${movieId}`)
+
+      const { data } = await axios.post(`/api/users/cart/${movieId}`)
       dispatch(addToCart(data))
     } catch(err) {
       console.error(`Adding ${movieId} was unsucessful`, err)
@@ -56,7 +57,7 @@ export default function getCartReducer(state = initialState, action) {
     case GET_CART:
       return action.cart
     case ADD_TO_CART:
-      return [...action.cart]
+      return [state, ...action.cart]
       default:
         return state
   }

@@ -69,10 +69,11 @@ export class Cart extends React.Component {
         </div>
         {cartMovies.length > 0 ? (
           <Link
-            to={`/cart/${this.props.match.params.id}/checkout`}
+            to={`/checkout`}
             id="checkout-button"
           >
-            <button type="submit">Proceed to Checkout</button>
+            <button type="submit">Proceed to Checkout
+            </button>
           </Link>
         ) : (
           ""
