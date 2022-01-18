@@ -7,25 +7,37 @@ import { fetchSingleMovie } from "../store/singleMovie";
 class SingleMovie extends React.Component {
   constructor() {
     super();
-    this.state = {
-      quantity: 1,
-    };
     this.addToCart = this.addToCart.bind(this);
   }
   componentDidMount() {
     this.props.getMovie(this.props.match.params.id);
   }
 
-  addToCart() {
+  addToCart(event) {
+    event.preventDefault();
+    let quantity =
+      document.getElementById("single-movie-qty").elements[0].value;
     let movie = this.props.movie;
     let products = [];
+    let double = false;
     if (localStorage.getItem("products")) {
       products = JSON.parse(localStorage.getItem("products"));
     }
-    products.push(movie);
+    products.filter((cartMovie) => {
+      if (cartMovie.id === movie.id) {
+        let oldQty = Number(cartMovie.qty);
+        let newQty = oldQty + Number(quantity);
+        cartMovie.qty = `${newQty}`;
+        double = true;
+      }
+    });
+    if (!double) {
+      products.push({ ...movie, qty: quantity });
+    }
+
     localStorage.setItem("products", JSON.stringify(products));
-    console.log(localStorage);
-    // this.props.addMovieToCart(this.props.movie, this.state.quantity)
+    document.getElementById("single-movie-qty").reset();
+    // this.forceUpdate()
   }
 
   render() {
@@ -39,9 +51,15 @@ class SingleMovie extends React.Component {
           <h3>Price: ${movie.price}</h3>
           <h2>Description: {movie.description}</h2>
           <p>Genre: {movie.genre}</p>
-          <button type="submit" onClick={this.addToCart}>
-            Add To Cart
-          </button>
+          <form id="single-movie-qty">
+            <input type="number" min="1" max="10" id="input-qty" />
+            <input
+              type="submit"
+              value="Add To Cart"
+              onClick={(e) => this.addToCart(e)}
+              id="input-button"
+            />
+          </form>
         </div>
       </div>
     );
