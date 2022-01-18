@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 class Confirmation extends React.Component {
     render() { 
-        const { username } = this.props
+        const { username } = this.props || "Guest"
         const thankYou = 'https://us.123rf.com/450wm/redcollegiya/redcollegiya1709/redcollegiya170900336/86730240-thank-you-lettering-vector-handwritten-text-card-template.jpg?ver=6'
         const confirmationNumber = Math.floor(Math.random() * 10000000000)
         return (
