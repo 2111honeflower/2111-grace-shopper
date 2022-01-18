@@ -26,6 +26,7 @@ for (let i = 0; i <= 100; i++) {
     imageUrl: faker.image.imageUrl(208, 288),
     description: faker.lorem.slug(),
     price: 2.99,
+    genre: faker.lorem.word()
   });
 }
 
