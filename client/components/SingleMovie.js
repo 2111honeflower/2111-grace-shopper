@@ -7,9 +7,6 @@ import { fetchSingleMovie } from "../store/singleMovie";
 class SingleMovie extends React.Component {
   constructor() {
     super();
-    this.state = {
-      something: true,
-    };
     this.addToCart = this.addToCart.bind(this);
   }
   componentDidMount() {
