@@ -153,7 +153,17 @@ nav img {
   flex-direction: column;
   width: 75rem;
 }
-.single-movie button{
+#single-movie-details input {
+  display: flex;
+  flex-direction: row
+}
+#input-qty {
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+  font-size: 1.5rem
+}
+#input-button {
   width: 6rem;
   height: 2rem;
   border-radius: 2rem;
