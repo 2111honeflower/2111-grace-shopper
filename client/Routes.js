@@ -7,6 +7,8 @@ import HomePage from "./components/HomePage";
 import { me } from "./store";
 import SingleMovie from "./components/SingleMovie";
 import Cart from "./components/Cart"
+import Checkout from "./components/Checkout";
+import Confirmation from "./components/Confirmation";
 
 /**
  * COMPONENT
@@ -28,6 +30,8 @@ class Routes extends Component {
             <Route path="/" exact component={HomePage} />
             <Route path="/movies/:id" component={SingleMovie} />
             <Route path="/cart" component={Cart} />
+            <Route path="/checkout" component={Checkout} />
+            <Route exact path="/confirmation" component={Confirmation} />
           </Switch>
         ) : (
           <Switch>
@@ -36,10 +40,12 @@ class Routes extends Component {
             <Route path="/signup" component={Signup} />
             <Route path="/movies/:id" component={SingleMovie} />
             <Route path="/cart" component={Cart} />
+            <Route exact path="/checkout" component={Checkout} />
+            <Route exact path ="/confirmation" component={Confirmation} />
           </Switch>
         )}
       </div>
-    );
+    ); 
   }
 }
 
