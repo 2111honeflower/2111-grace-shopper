@@ -1,65 +1,87 @@
 const express = require('express');
-const faker = require('phaker.js');
+const faker = require('phaker');
 const app = express();
-//const { User, Cart, Movie, Movie-Cart } = require("../server/db/models");
-
+const { db } = require('../server/db');
+const User = require('../server/db/models/User');
+const Movie = require('../server/db/models/Movie');
+const Cart = require('../server/db/models/Cart');
+const Movie_Cart = require('../server/db/models/Movie-Cart');
 
 //CREATE FAKE USERS
-app.get('/user', (req, res, next) => {
-  faker.seed(123); //this seeds for persistant data during demos
-  res.json(bulkUsers());
-});
-
-function bulkUsers() {
-  let users = [];
-  for (let i = 0; i < 100; i++) {
-    users.push({
-      userName: faker.name.findName(),
-      email: faker.internet.email(),
-      password: faker.internet.password(),
-      isAdmin: false,
-    });
-  }
+const fakeUsers = [];
+for (let i = 0; i <= 100; i++) {
+  fakeUsers.push({
+    userName: faker.internet.userName(),
+    email: faker.internet.email(),
+    password: faker.internet.password(),
+    isAdmin: false,
+  });
 }
-
 
 //CREATE FAKE MOVIES
-app.get('/movie', (req, res, next) => {
-  faker.seed(123);
-  res.json(bulkMovies());
-});
-
-function bulkMovies() {
-  let movies = [];
-  for (let i = 0; i < 100; i++) {
-    movies.push({
-      name: faker.lorem.word(),
-      imageUrl: faker.unsplash.imageUrl(208, 288),
-      description: faker.commerce.productDescription(),
-      price: faker.commerce.price(5.99),
-    });
-  }
+const fakeMovies = [];
+for (let i = 0; i <= 100; i++) {
+  fakeMovies.push({
+    name: faker.lorem.word(),
+    imageUrl: faker.image.imageUrl(208, 288),
+    description: faker.lorem.slug(),
+    price: 2.99,
+  });
 }
 
-//movie-Cart association data goes here?
-
-
 //CREATE FAKE CARTS
-app.get('/cart', (req, res, next) => {
-  faker.seed(123);
-  res.json(bulkCarts());
-});
+const fakeCarts = [];
+for (let i = 1; i <= 100; i++) {
+  fakeCarts.push({
+    movieCount: faker.random.number(5),
+    totalPrice: 99.99,
+    shippingPrice: 5.99,
+    address: faker.address.streetAddress(),
+    status: 'Open',
+    userId: i, //assign cart to user
+  });
+}
 
-function bulkCarts() {
-  let carts = [];
-  for (let i = 0; i < users; i++) {
-    carts.push({
-      movieCount: faker.random.number(1, 5, 1),
-      totalPrice: //TK CALCULATED FROM MOVIE-CART - ,
-      shippingPrice: 5.99,
-      address: faker.address.streetAddress(),
-      status: 'Open',
-      userId: i //assign cart to user
-    });
+const bulkSeed = async () => {
+  try {
+    await db.sync({ force: true });
+
+    await Promise.all(
+      fakeUsers.map((user) => {
+        return User.create(user);
+      })
+    );
+    await Promise.all(
+      fakeMovies.map((movie) => {
+        return Movie.create(movie);
+      })
+    );
+    await Promise.all(
+      fakeCarts.map((cart) => {
+        return Cart.create(cart);
+      })
+    );
+    await Promise.all(
+      movieCart.map((moviecart) => {
+        return Movie_Cart.create(moviecart);
+      })
+    );
+  } catch (err) {
+    console.log(err);
   }
+};
+
+module.exports = bulkSeed;
+
+if (require.main === module) {
+  bulkSeed()
+    .then(() => {
+      console.log('Seeding success!');
+      db.close();
+    })
+    .catch((err) => {
+      console.error('Oh noes! Something went wrong!');
+      console.error(err);
+      db.close();
+    });
 }

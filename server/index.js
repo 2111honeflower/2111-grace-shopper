@@ -2,11 +2,13 @@ const { db } = require('./db')
 const PORT = process.env.PORT || 8080
 const app = require('./app')
 const seed = require('../script/seed');
+const bulkSeed = require('../script/bulkSeed');
 
 const init = async () => {
   try {
     if(process.env.SEED === 'true'){
       await seed();
+      await bulkSeed()
     }
     else {
       await db.sync()
