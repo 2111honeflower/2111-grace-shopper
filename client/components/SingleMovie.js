@@ -39,6 +39,7 @@ class SingleMovie extends React.Component {
           <h3>Price: ${movie.price}</h3>
           <h2>Description: {movie.description}</h2>
           <p>Genre: {movie.genre}</p>
+          <input type="number" min="1" max="100" value="1" />
           <button type="submit" onClick={this.addToCart}>
             Add To Cart
           </button>
