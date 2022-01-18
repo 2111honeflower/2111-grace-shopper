@@ -9,7 +9,7 @@ describe ("Cart Model", () =>{
       const cart = await Cart.create({
         movieCount: 2,
         totalPrice: 45.95,
-        shippingPrice: 7.98,
+        shippingPrice: 7.99,
         address: "123 Test Ave. Chicago, IL 60606",
         status: "Placed"
       });
