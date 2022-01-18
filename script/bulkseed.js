@@ -41,7 +41,7 @@ function bulkMovies() {
   }
 }
 
-//movie-Cart association data goes here
+//movie-Cart association data goes here?
 
 
 //CREATE FAKE CARTS
@@ -54,14 +54,12 @@ function bulkCarts() {
   let carts = [];
   for (let i = 0; i < users; i++) {
     carts.push({
-      movieCount: //TK FROM MOVIE-CART,
-      totalPrice: //TK CALCULATED FROM MOVIE-CART
+      movieCount: faker.random.number(1, 5, 1),
+      totalPrice: //TK CALCULATED FROM MOVIE-CART - ,
       shippingPrice: 5.99,
       address: faker.address.streetAddress(),
       status: 'Open',
+      userId: i //assign cart to user
     });
   }
 }
-
-//Assign carts to users here
-
