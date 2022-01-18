@@ -1,13 +1,26 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
+const Movie = require('./models/Movie');
+const Cart = require('./models/Cart');
 
 const Movie_Cart = db.define('Movie_Cart', {
     quantity: {
         type: Sequelize.INTEGER
     },
-    //Cara's note was to have pivot table have a snap shot of cart
-    //populate upon purchase/places status change - clarification needed. 
-
+    filmId: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: Movie,
+            key: 'id',
+        }
+    },
+    basketId: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: Cart,
+            key: 'id',
+        }
+    },
 })
 
 module.exports = Movie_Cart;
