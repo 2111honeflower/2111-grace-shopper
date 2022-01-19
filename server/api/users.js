@@ -3,7 +3,7 @@ const { models: { User }} = require('../db')
 const {isAdmin} = require('./admin')
 
 // GET /users
-router.get('/', isAdmin, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the id and username fields - even though
@@ -13,7 +13,7 @@ router.get('/', isAdmin, async (req, res, next) => {
       // 1/15 - Jill
       // the only one who should be looking at users is admin, yes? So if we
       // use isAdmin helper func in api/admin.js, this should limit who can view
-      attributes: ['id', 'email', 'username']
+      attributes: ['id', 'email', 'userName']
     })
     res.json(users)
   } catch (err) {
@@ -22,13 +22,13 @@ router.get('/', isAdmin, async (req, res, next) => {
 })
 
 // GET /users/:id
-router.get('/:id', isAdmin, async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
     const users = await User.findOne({
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'username', 'email',]
+      attributes: ['id', 'userName', 'email', 'isAdmin',]
     })
     res.json(users)
   } catch(err) {

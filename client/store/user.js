@@ -15,9 +15,8 @@ export const getSingleUser = (user) => ({
 export const fetchSingleUser = (id) => {
   return async (dispatch) => {
     try {
-      // aliasing data as the variable name 'user'
-      const { data: user } = await axios.get(`/api/users/${id}`);
-      dispatch(getSingleUser(user));
+      const { data } = await axios.get(`/api/users/${id}`);
+      dispatch(getSingleUser(data));
     } catch (err) {
       console.log('fetchSingleUser thunk error!!', err);
     }

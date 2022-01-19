@@ -13,15 +13,9 @@ class Home extends React.Component {
   }
   componentDidMount() {
 
-
   this.props.getCart(this.props.id)
 
-
-
   }
-
-
-
 
   render(){
 
@@ -53,9 +47,6 @@ const mapState = (state) => ({
     auth: state.auth
 })
 
-  const mapDispatch = (dispatch) => ({
-    getCart: (id) => dispatch(createCart(id)),
-  })
 
 
-export default connect(mapState, mapDispatch)(Home);
+export default connect(mapState, null)(Home);

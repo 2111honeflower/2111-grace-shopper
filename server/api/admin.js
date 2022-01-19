@@ -10,7 +10,7 @@ async function isAdmin(req, res, next) {
       isAdmin: true,
     },
   });
-  if (!currentUser.isAdmin()) {
+  if (!currentUser.isAdmin) {
     return res.status(403).json('Permission required for this feature.');
   }
 }

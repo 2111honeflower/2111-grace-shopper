@@ -1,23 +1,22 @@
+
 import axios from "axios";
 import history from "../history";
 
 const TOKEN = "token";
 
+
 /**
  * ACTION TYPES
  */
+
 const SET_AUTH = "SET_AUTH";
-// const SET_CART = "SET_CART";
 
 /**
  * ACTION CREATORS
  */
-const setAuth = (auth) => {
 
-  return { type: SET_AUTH, auth };
-};
+const setAuth = (auth) => ({ type: SET_AUTH, auth });
 
-// const setCart = (cart) => ({ type: SET_CART, cart });
 /**
  * THUNK CREATORS
  */
@@ -30,20 +29,9 @@ export const me = () => async (dispatch) => {
         authorization: token,
       },
     });
-console.log(res.data, "res.data")
     return dispatch(setAuth(res.data));
   }
 };
-
-// export const createCart = (userId) => async (dispatch) => {
-//   try {
-//     const cart = await axios.post(`/api/cart/${userId}`);
-
-//     return dispatch(setCart(cart));
-//   } catch (err) {
-//     console.error("createCart thunk", err);
-//   }
-// };
 
 export const authenticateLogin =
   (password, email, method) => async (dispatch) => {
@@ -55,6 +43,7 @@ export const authenticateLogin =
       return dispatch(setAuth({ error: authError }));
     }
   };
+
 
 export const authenticateSignup =
   (userName, password, email, method) => async (dispatch) => {
@@ -73,7 +62,7 @@ export const authenticateSignup =
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN);
-  history.push("/");
+  history.push("/login");
   return {
     type: SET_AUTH,
     auth: {},
@@ -88,9 +77,6 @@ export default function (state = {}, action) {
   switch (action.type) {
     case SET_AUTH:
       return {...state, ...action.auth};
-    // case SET_CART:
-    //   {const cart = action.cart.data;
-    //   return {...state, cart}}
     default:
       return state;
   }
