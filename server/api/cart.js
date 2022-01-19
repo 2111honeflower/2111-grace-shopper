@@ -1,27 +1,28 @@
-const { Movie, Cart, Movie_Cart } = require('../db');
+const { models: { Movie, Cart, Movie_Cart }} = require('../db');
 const router = require('express').Router();
 
-//Note: Create Read Update
-
-//Movie_Cart Routes
+//Note: Create Update
 
 //GET /api/cart/:cartId
-//gets all the movies in the cart
+//gets the cart data, movies in the cart and movie_cart association table
+//do we want less info? I tried and couldn't figure it out...
 router.get('/:cartId', async (req, res, next) =>{
   try {
-    const cart = await Movie_Cart.findAll({
+    const cart = await Cart.findAll({
       where: {
         id: req.params.cartId
       },
-      include: { model: Movie}
+      include: { model: Movie }
     });
     res.json(cart)
   } catch (err) {
     next(err);
   }
-})
+});
 
+router.post('/:cartId', async (req, res, next) => {
 
+});
 // router.post('/:id', async (req, res, next) => {
 //   //id is user id
 //   //if cart, add item using movie_cart with movieId and Quantity
