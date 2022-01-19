@@ -62,7 +62,7 @@ export class Cart extends React.Component {
       <div>
         <h2>CART:</h2>
         <div id="cart">
-          {cartMovies
+          {cartMovies.length > 0
             ? cartMovies.map((movie) => {
                 return (
                   <div className="cart-items" key={movie.id}>
@@ -104,7 +104,7 @@ export class Cart extends React.Component {
             : "Cart is Empty"}
           {/* <p>SUB-TOTAL:{cart.totalPrice}</p> */}
         </div>
-        {cartMovies ? (
+        {cartMovies.length > 0 ? (
           <Link to={`/checkout`} id="checkout-button">
             <button type="submit">Proceed to Checkout</button>
           </Link>
