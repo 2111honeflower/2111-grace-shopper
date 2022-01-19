@@ -10,7 +10,7 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
       <h1>HONEFLOWER MOVIES</h1>
     </div>
     <nav>
-    {isAdmin ? (
+    {isAdmin === true ? (
       <Link to = "/users">Admin</Link>
     ) : (
       ""
