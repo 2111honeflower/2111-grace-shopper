@@ -282,9 +282,9 @@ const movieCarts = [
     movieId: 2,
   },
   {
-    quantity: 0,
+    quantity: 1,
     cartId: 3,
-    movieId: null,
+    movieId: 1,
   },
   {
     quantity: 2,
