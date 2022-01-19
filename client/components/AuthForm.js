@@ -73,7 +73,6 @@ const mapDispatchLogin = (dispatch) => {
       const formName = evt.target.name;
       const password = evt.target.password.value;
       const email = evt.target.email.value
-
       dispatch(authenticateLogin(password, email, formName));
     },
   };
@@ -87,7 +86,6 @@ const mapDispatchSignup = (dispatch) => {
       const username = evt.target.username.value;
       const password = evt.target.password.value;
       const email = evt.target.email.value
-
       dispatch(authenticateSignup(username, password, email, formName));
     },
   };
