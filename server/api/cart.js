@@ -42,8 +42,21 @@ router.post('/:id', async (req, res, next) => {
 
 //create Movie_Cart Instance
 //POST /api/cart/:cartId
-router.post('/:cartId', async (req, res,next) => {
-
+router.post('/:cartId/:movieId', async (req, res, next) => {
+  try {
+    let cart =  await Cart.findOne({
+      where: {
+        id: req.params.cartId
+      },
+      include: { model: Movie }
+    });
+    let row =  await cart.addMovie(req.params.movieId)
+    //get the cart w/ updated movie & quantity of one?
+    //what do we send?
+    res.send(row)
+  } catch (err) {
+    next(err);
+  }
 })
   //if cart, add item using movie_cart with movieId and Quantity
   //send those items
