@@ -4,10 +4,14 @@ import Axios from "axios"
 
 //ACTION TYPES
 
+const SET_CART = "SET_CART";
 const GET_CART = "GET_CART"
 const ADD_TO_CART = "ADD_TO_CART"
 
 //ACTION CREATORS
+
+const setCart = (cart) => ({ type: SET_CART, cart })
+
 export const getCart = (cart) => {
   return {
     type: GET_CART,
@@ -22,6 +26,16 @@ export const addToCart = (movie, quantity = 1) => ({
 })
 
 //THUNKS
+
+export const createCart = (userId) => async (dispatch) => {
+  try {
+    const cart = await axios.post(`/api/cart/${userId}`);
+
+    return dispatch(setCart(cart));
+  } catch (err) {
+    console.error("createCart thunk", err);
+  }
+};
 
 export const fetchCart = (cartId) => {
   return async (dispatch) => {
@@ -58,6 +72,9 @@ export default function getCartReducer(state = initialState, action) {
       return action.cart
     case ADD_TO_CART:
       return [state, ...action.cart]
+      case SET_CART:
+        {const cart = action.cart.data;
+        return [...state, cart]}
       default:
         return state
   }

@@ -11,14 +11,11 @@ const TOKEN = "token";
 
 const SET_AUTH = "SET_AUTH";
 
-
 /**
  * ACTION CREATORS
  */
 
-
 const setAuth = (auth) => ({ type: SET_AUTH, auth });
-
 
 /**
  * THUNK CREATORS
@@ -35,7 +32,6 @@ export const me = () => async (dispatch) => {
     return dispatch(setAuth(res.data));
   }
 };
-
 
 export const authenticateLogin =
   (password, email, method) => async (dispatch) => {
@@ -77,9 +73,10 @@ export const logout = () => {
  * REDUCER
  */
 export default function (state = {}, action) {
+  // console.log(action, "ACTION")
   switch (action.type) {
     case SET_AUTH:
-      return action.auth;
+      return {...state, ...action.auth};
     default:
       return state;
   }
