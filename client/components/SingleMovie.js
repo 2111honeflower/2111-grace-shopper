@@ -52,7 +52,7 @@ class SingleMovie extends React.Component {
           <h2>Description: {movie.description}</h2>
           <p>Genre: {movie.genre}</p>
           <form id="single-movie-qty">
-            <input type="number" min="1" max="10" id="input-qty" />
+            <input type="number" min="1" max="10" id="input-qty" placeholder="1"/>
             <input
               type="submit"
               value="Add To Cart"
