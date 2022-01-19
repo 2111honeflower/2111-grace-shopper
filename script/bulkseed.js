@@ -29,6 +29,16 @@ for (let i = 0; i <= 100; i++) {
   });
 }
 
+//CREATE MOVIE/CART
+const movieCart = [];
+for (let i = 0; i <= 100; i++) {
+  movieCart.push({
+    quantity: faker.lorem.word(),
+    movieId: faker.random.number(100),
+    cartId: i,
+  });
+}
+
 //CREATE FAKE CARTS
 const fakeCarts = [];
 for (let i = 1; i <= 100; i++) {

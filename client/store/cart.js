@@ -17,7 +17,7 @@ export const getCart = (cart) => {
 
 export const addToCart = (movie, quantity = 1) => ({
   type: ADD_TO_CART,
-  movie, 
+  movie,
   quantity
 })
 
@@ -56,7 +56,7 @@ export default function getCartReducer(state = initialState, action) {
     case GET_CART:
       return action.cart
     case ADD_TO_CART:
-      return [...action.cart]
+      return [action.cart]
       default:
         return state
   }
