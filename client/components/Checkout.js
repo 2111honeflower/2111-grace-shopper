@@ -14,7 +14,7 @@ class Checkout extends Component {
   // this.props.loadCart()
   //}
 
-  
+
 
   //handleChange = event => {
    // this.setState({
@@ -52,7 +52,7 @@ class Checkout extends Component {
                 <label>Shipping Address:</label>
                 <input type="text" />
                 <label htmlFor="ccn">Credit Card Number:</label>
-                <input maxlength="19" placeholder="xxxx xxxx xxxx xxxx" />  
+                <input maxLength="19" placeholder="xxxx xxxx xxxx xxxx" />
                 </form>
           </div> .
           <div style={{ position: 'absolute', left: 200}}>
@@ -96,7 +96,7 @@ class Checkout extends Component {
                 )}
           </div>
           </div>
-    </div>  
+    </div>
     )
   }
 }
@@ -106,7 +106,7 @@ const mapState = (state) => {
       movies: state.movies,
     };
   };
-  
+
   const mapDispatch = (dispatch) => {
     return {
       loadCart: (id) => dispatch(fetchCart(id)),
