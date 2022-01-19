@@ -23,13 +23,14 @@ const setCart = (cart) => ({ type: SET_CART, cart });
  */
 export const me = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
+
   if (token) {
     const res = await axios.get("/auth/me", {
       headers: {
         authorization: token,
       },
     });
-
+console.log(res.data, "res.data")
     return dispatch(setAuth(res.data));
   }
 };
@@ -87,7 +88,7 @@ export default function (state = {}, action) {
     case SET_AUTH:
       return action.auth;
     case SET_CART:
-      return [state, action.cart];
+      return action.cart;
     default:
       return state;
   }

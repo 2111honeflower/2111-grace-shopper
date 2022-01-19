@@ -12,30 +12,49 @@ class Home extends React.Component {
     super(props)
   }
   componentDidMount() {
-console.log(this.props.id)
-    this.props.getCart(this.props.id)
+
+// if(this.props.id){
+//   this.props.getCart(this.props.id)
+// }
+
 
   }
+  // componentDidUpdate(prevProps){
+  //       if (this.props.id !== prevProps.id) {
+  //        this.fetchData(this.props.id);
+  //       }
+  //     }
+
+
 
   render(){
-    const user = this.props.username || "Guest"
-    return (
-      <div>
-        <h3>Hello, {user}</h3>
+    if(this.props.username){
+      return (
+        <div>
+        <h3>Hello, {this.props.username}!</h3>
         <AllMovies />
       </div>
-    );
+      )
+    } else {
+      return (
+        <div>
+          <h3>Hello!</h3>
+          <AllMovies />
+        </div>
+      );
+    }
+    // const user = this.props.username || "Guest"
+    // return (
+    //   <div>
+    //     <h3>Hello, {user}</h3>
+    //     <AllMovies />
+    //   </div>
+    // );
   }
 }
-
-
   //do i make this where we find cart? by turning this into a class or in all movies?
 
-
-
-
-
-
+//conditional for name display with two returns
 /**
  * CONTAINER
  */
