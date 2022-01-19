@@ -11,7 +11,7 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
     </div>
     <nav>
     {isAdmin ? (
-      <Link to = "/users">View All Users</Link>
+      <Link to = "/users">Admin</Link>
     ) : (
       ""
     )}

@@ -19,7 +19,7 @@ class NewMovieForm extends React.Component {
     this.props.createMovie({...this.state});
     this.setState({
       name: "",
-      price: null //USED AGAIN HERE
+      price: '' //USED AGAIN HERE
     });
   }
 
