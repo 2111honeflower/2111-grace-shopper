@@ -2,7 +2,7 @@ const { db } = require('./db')
 const PORT = process.env.PORT || 1337
 const app = require('./app')
 const seed = require('../script/seed');
-const bulkSeed = require('../script/bulkSeed');
+//const bulkSeed = require('../script/bulkSeed');
 
 const init = async () => {
   try {
