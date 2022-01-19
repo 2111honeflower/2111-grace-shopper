@@ -9,6 +9,9 @@ import SingleMovie from "./components/SingleMovie";
 import Cart from "./components/Cart"
 import Checkout from "./components/Checkout";
 import Confirmation from "./components/Confirmation";
+import Users from "./components/Admin/Users";
+import User from "./components/Admin/User"
+import AllMovies from "./components/AllMovies"
 
 /**
  * COMPONENT
@@ -16,6 +19,7 @@ import Confirmation from "./components/Confirmation";
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
+
   }
 
   render() {
@@ -26,26 +30,31 @@ class Routes extends Component {
         {isLoggedIn ? (
 
           <Switch>
-            <Route path="/home" component={Home} />
-            <Route path="/" exact component={HomePage} />
-            <Route path="/movies/:id" component={SingleMovie} />
-            <Route path="/cart" component={Cart} />
-            <Route path="/checkout" component={Checkout} />
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/" exact component={HomePage} />
+            <Route exact path="/movies/:id" component={SingleMovie} />
+            <Route exact path="/cart" component={Cart} />
+            <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/confirmation" component={Confirmation} />
+            <Route exact path="/users" component={Users} />
+            <Route exact path="/users/:id" component={User} />
+            <Redirect to = "/home" />
           </Switch>
+
         ) : (
           <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/movies/:id" component={SingleMovie} />
-            <Route path="/cart" component={Cart} />
+            <Route exact path="/" exact component={HomePage} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/movies/:id" component={SingleMovie} />
+            <Route exact path="/cart" component={Cart} />
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path ="/confirmation" component={Confirmation} />
+            <Redirect to = "/home" /> 
           </Switch>
         )}
       </div>
-    ); 
+    );
   }
 }
 
@@ -56,7 +65,7 @@ const mapState = (state) => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
     // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
-    isLoggedIn: !!state.auth.id,
+    isLoggedIn: state.auth.id,
   };
 };
 

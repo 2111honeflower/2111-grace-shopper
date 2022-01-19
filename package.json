@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack",
     "build:dev": "npm run build -- --watch --mode=development",
+    "bulkSeed": "node script/bulkSeed.js",
     "deploy": "script/deploy",
     "seed": "node script/seed.js",
     "start": "node server & node server/index.js",
@@ -30,6 +31,7 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
+    "phaker": "^6.0.1",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {

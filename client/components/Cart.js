@@ -33,13 +33,16 @@ export class Cart extends React.Component {
     cartMovies.filter((movie) => {
       if (movie.id === id) {
         let quantity = Number(movie.qty);
+
         if (change === "+") {
           quantity += 1;
         } else {
           quantity -= 1;
         }
         movie.qty = `${quantity}`;
+
       }
+
     });
     localStorage.setItem("products", JSON.stringify(cartMovies));
   }
@@ -54,14 +57,12 @@ export class Cart extends React.Component {
 
   render() {
     const cartMovies = JSON.parse(localStorage.getItem("products"));
-    //const cart = this.props.thisCart;
-    //  console.log(cartMovies, "CART MOVIES");
 
     return (
       <div>
         <h2>CART:</h2>
         <div id="cart">
-          {cartMovies.length > 0
+          {cartMovies
             ? cartMovies.map((movie) => {
                 return (
                   <div className="cart-items" key={movie.id}>
@@ -103,7 +104,7 @@ export class Cart extends React.Component {
             : "Cart is Empty"}
           {/* <p>SUB-TOTAL:{cart.totalPrice}</p> */}
         </div>
-        {cartMovies.length > 0 ? (
+        {cartMovies ? (
           <Link to={`/checkout`} id="checkout-button">
             <button type="submit">Proceed to Checkout</button>
           </Link>

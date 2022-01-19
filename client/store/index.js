@@ -10,12 +10,12 @@ import singleUserReducer from './user';
 import getCartReducer from './cart';
 
 const reducer = combineReducers({
-  auth,
+  auth: auth,
   movies: moviesReducer,
   movie: movieReducer,
-  usersReducer,
-  singleUserReducer,
-  getCartReducer
+  users: usersReducer,
+  user: singleUserReducer,
+  getCartReducer,
 });
 
 const middleware = composeWithDevTools(
