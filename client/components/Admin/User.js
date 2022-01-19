@@ -1,18 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { fetchSingleUser } from '../../store/user';
 
 class SingleUser extends React.Component {
+
     componentDidMount() {
        this.props.fetchSingleUser(this.props.match.params.id)
     }
 
     render() {
+        const { user } = this.props;
+        console.log(user)
         return (
-            <div>
-              <p>Username: {this.props.userName}</p>
-              <p>Email: {this.props.email}</p>
+            <div className="all-movies">
+              <p>Username: {user.userName}</p>
+              <p>Email: {user.email}</p>
             </div>
         )
     }
