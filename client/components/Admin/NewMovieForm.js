@@ -8,7 +8,7 @@ class NewMovieForm extends React.Component {
     super();
     this.state = {
       name: "",
-      price: null, //IS THIS CORRECT STARTING VALUE?
+      price: "", //IS THIS CORRECT STARTING VALUE?
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -19,7 +19,7 @@ class NewMovieForm extends React.Component {
     this.props.createMovie({...this.state});
     this.setState({
       name: "",
-      price: '' //USED AGAIN HERE
+      price: "" //USED AGAIN HERE
     });
   }
 

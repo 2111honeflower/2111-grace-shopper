@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { fetchUsers } from '../../store/users'
 import NewMovieForm from './NewMovieForm';
 import UpdateMovieForm from './UpdateMovieForm'
-import Button from 'react-bootstrap/Button';
+
 
 class Users extends React.Component {
 
@@ -15,14 +15,14 @@ class Users extends React.Component {
 
 
   render() {
-    const Columns = () => 
+    const Columns = () =>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20 }}>
         <div>Column 1</div>
         <div>Column 2</div>
         <div>Column 3</div>
       </div>
       const userData = this.props.users;
-      console.log(userData)
+
       const userList = userData.map((user) => (
         <div className="all-movies" key={user.id}>
           <Link to={`/users/${user.id}`} >
@@ -37,9 +37,9 @@ class Users extends React.Component {
         <h1 className = "row">Registered Users</h1>
           <div id="all-users" className='column'>{userData.length >= 1 ? userList : "Loading..."}</div>
           <NewMovieForm> </NewMovieForm >
-          <UpdateMovieForm></UpdateMovieForm> 
+          <UpdateMovieForm></UpdateMovieForm>
       </main>
-      
+
     );
   }
 }
