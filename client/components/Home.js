@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import AllMovies from "./AllMovies";
-import { createCart } from "../store/auth"
+import { createCart } from "../store/cart"
 
 /**
  * COMPONENT
@@ -13,21 +13,18 @@ class Home extends React.Component {
   }
   componentDidMount() {
 
-// if(this.props.id){
-//   this.props.getCart(this.props.id)
-// }
+
+  this.props.getCart(this.props.id)
+
 
 
   }
-  // componentDidUpdate(prevProps){
-  //       if (this.props.id !== prevProps.id) {
-  //        this.fetchData(this.props.id);
-  //       }
-  //     }
+
 
 
 
   render(){
+
     if(this.props.username){
       return (
         <div>
@@ -43,18 +40,10 @@ class Home extends React.Component {
         </div>
       );
     }
-    // const user = this.props.username || "Guest"
-    // return (
-    //   <div>
-    //     <h3>Hello, {user}</h3>
-    //     <AllMovies />
-    //   </div>
-    // );
+
   }
 }
-  //do i make this where we find cart? by turning this into a class or in all movies?
 
-//conditional for name display with two returns
 /**
  * CONTAINER
  */
