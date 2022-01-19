@@ -4,27 +4,29 @@ import { connect } from "react-redux";
 import { updateMovie } from "../../store/singleMovie";
 
 class UpdateMovieForm extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      price: null, //IS NULL CORRECT?
+      name: "",
+      price: "", //IS NULL CORRECT?
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.movie.name !== this.props.movie.name ||
-      prevProps.movie.price !== this.props.movie.price) {
+    if (
+      prevProps.movie.name !== this.props.movie.name ||
+      prevProps.movie.price !== this.props.movie.price
+    ) {
       this.setState({
-        name: this.props.movie.name || '',
-        price: this.props.movie.price || ''
+        name: this.props.movie.name || "",
+        price: this.props.movie.price || "",
       });
     }
   }
 
-  handleSubmit (event) {
+  handleSubmit(event) {
     event.preventDefault();
     this.props.updateMovie({ ...this.props.movie, ...this.state });
   }
@@ -39,23 +41,33 @@ class UpdateMovieForm extends React.Component {
       <div>
         <h3>Update Movie:</h3>
         <form onSubmit={this.handleSubmit}>
-            <label htmlFor="name">Name:</label>
-            <input type="text" name="name" onChange={this.handleChange} value={name} />
-            <label htmlFor="price">Price:</label>
-            <input type="text" name="price" onChange={this.handleChange} value={price} />
-            <button type="submit">Submit</button>
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            name="name"
+            onChange={this.handleChange}
+            value={name}
+          />
+          <label htmlFor="price">Price:</label>
+          <input
+            type="text"
+            name="price"
+            onChange={this.handleChange}
+            value={price}
+          />
+          <button type="submit">Submit</button>
         </form>
       </div>
-    )
+    );
   }
 }
 
 const mapState = (state) => ({
-  movie: state.movie
+  movie: state.movie,
 });
 
 const mapDispatch = (dispatch) => ({
-  updateMovie: (movie) => dispatch(updateMovie(movie))
+  updateMovie: (movie) => dispatch(updateMovie(movie)),
 });
 
 export default connect(mapState, mapDispatch)(UpdateMovieForm);
