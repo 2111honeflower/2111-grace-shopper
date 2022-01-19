@@ -22,33 +22,32 @@ router.get('/:cartId', async (req, res, next) =>{
 
 //create cart
 //create Movie_Cart Instance
+  //if cart, add item using movie_cart with movieId and Quantity
+  //send those items
+  //we're always going to send movie data to movie_cart
 //edit cart
 //edit Movie_Cart Instance
-//change status on cart
+//change status on cart - part of edit route
 //delete Movie_Cart Instance
 
-// router.post('/:id', async (req, res, next) => {
-//   //id is user id or cart id, do I need both?
-//   //if cart, add item using movie_cart with movieId and Quantity
-//   //send those items
-
-//   //should be able to push local storage with this route as well
-//   try {
-//     const [userCart, created] = await Cart.findOrCreate({
-//       where: {
-//         status: 'open',
-//         userId: req.params.userId
-//       },
-//     });
-//     //we're always going to send movie data to movie_cart
-//     if (created) {
-//       res.json(userCart);
-//     } else {
-//       res.json('Cannot have two open carts'); // can we merge carts? or is this a case of please sign in?
-//     }
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+router.post('/:id', async (req, res, next) => {
+  //id is user id
+  //should be able to push local storage with this route as well
+  try {
+    const [userCart, created] = await Cart.findOrCreate({
+      where: {
+        status: 'open',
+        userId: req.params.userId
+      },
+    });
+    if (created) {
+      res.json(userCart);
+    } else {
+      res.json('Cannot have two open carts'); // can we merge carts? or is this a case of please sign in?
+    }
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
