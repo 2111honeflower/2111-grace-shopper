@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { authenticateLogin, authenticateSignup } from "../store";
+import { Link } from "react-router-dom";
 
 /**
  * COMPONENT
@@ -32,7 +33,9 @@ const AuthForm = (props) => {
           <input name="password" type="password" />
         </div>
         <div>
+
           <button type="submit">{displayName}</button>
+
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
@@ -70,6 +73,7 @@ const mapDispatchLogin = (dispatch) => {
       const formName = evt.target.name;
       const password = evt.target.password.value;
       const email = evt.target.email.value
+
       dispatch(authenticateLogin(password, email, formName));
     },
   };
@@ -83,6 +87,7 @@ const mapDispatchSignup = (dispatch) => {
       const username = evt.target.username.value;
       const password = evt.target.password.value;
       const email = evt.target.email.value
+
       dispatch(authenticateSignup(username, password, email, formName));
     },
   };

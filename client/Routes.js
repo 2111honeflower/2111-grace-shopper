@@ -9,6 +9,7 @@ import SingleMovie from "./components/SingleMovie";
 import Cart from "./components/Cart"
 import Checkout from "./components/Checkout";
 import Confirmation from "./components/Confirmation";
+import AllMovies from "./components/AllMovies"
 
 /**
  * COMPONENT
@@ -16,6 +17,7 @@ import Confirmation from "./components/Confirmation";
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
+
   }
 
   render() {
@@ -26,26 +28,30 @@ class Routes extends Component {
         {isLoggedIn ? (
 
           <Switch>
-            <Route path="/home" component={Home} />
-            <Route path="/" exact component={HomePage} />
+            {/* <Route path="/movies" exact component={AllMovies} /> */}
+            <Route path="/" exact component={Home} />
             <Route path="/movies/:id" component={SingleMovie} />
             <Route path="/cart" component={Cart} />
             <Route path="/checkout" component={Checkout} />
             <Route exact path="/confirmation" component={Confirmation} />
+<Redirect to="/" />
           </Switch>
+
         ) : (
           <Switch>
-            <Route path="/" exact component={HomePage} />
+            {/* <Route path="/movies" exact component={AllMovies} /> */}
+            <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/movies/:id" component={SingleMovie} />
             <Route path="/cart" component={Cart} />
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path ="/confirmation" component={Confirmation} />
+
           </Switch>
         )}
       </div>
-    ); 
+    );
   }
 }
 

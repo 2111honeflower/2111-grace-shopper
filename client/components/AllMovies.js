@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchMovies, deleteMovie } from "../store/movies";
 
+
 class AllMovies extends React.Component {
   constructor() {
     super();
@@ -11,6 +12,7 @@ class AllMovies extends React.Component {
 
   componentDidMount() {
     this.props.getMovies();
+
   }
 
   handleClick(id, event) {

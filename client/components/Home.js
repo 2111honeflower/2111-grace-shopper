@@ -1,28 +1,53 @@
 import React from "react";
 import { connect } from "react-redux";
 import AllMovies from "./AllMovies";
+import { createCart } from "../store/auth"
 
 /**
  * COMPONENT
  */
-export const Home = (props) => {
-  const { username } = props;
 
-  return (
-    <div>
-      <h3>Welcome, {username}</h3>
-      <AllMovies />
-    </div>
-  );
-};
+class Home extends React.Component {
+  constructor(props){
+    super(props)
+  }
+  componentDidMount() {
+console.log(this.props.id)
+    this.props.getCart(this.props.id)
+
+  }
+
+  render(){
+    const user = this.props.username || "Guest"
+    return (
+      <div>
+        <h3>Hello, {user}</h3>
+        <AllMovies />
+      </div>
+    );
+  }
+}
+
+
+  //do i make this where we find cart? by turning this into a class or in all movies?
+
+
+
+
+
 
 /**
  * CONTAINER
  */
-const mapState = (state) => {
-  return {
+const mapState = (state) => ({
     username: state.auth.userName,
-  };
-};
+    id: state.auth.id,
+    auth: state.auth
+})
 
-export default connect(mapState, null)(Home);
+  const mapDispatch = (dispatch) => ({
+    getCart: (id) => dispatch(createCart(id)),
+  })
+
+
+export default connect(mapState, mapDispatch)(Home);
