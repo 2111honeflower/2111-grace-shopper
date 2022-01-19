@@ -51,9 +51,7 @@ router.post('/:cartId/:movieId', async (req, res, next) => {
       include: { model: Movie }
     });
     let row =  await cart.addMovie(req.params.movieId)
-    //get the cart w/ updated movie & quantity of one?
-    //what do we send?
-    res.send(row)
+    res.send(row) //SEND ROW?
   } catch (err) {
     next(err);
   }
