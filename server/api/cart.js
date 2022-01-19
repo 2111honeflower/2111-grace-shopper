@@ -20,8 +20,12 @@ router.get('/:cartId', async (req, res, next) =>{
   }
 });
 
-//What am I creating here? An instance on Movie_Cart or Cart?
-//Sarah said Movie_Cart, but it would have to be created in cart first...
+//create cart
+//create Movie_Cart Instance
+//edit cart
+//edit Movie_Cart Instance
+//change status on cart
+//delete Movie_Cart Instance
 
 // router.post('/:id', async (req, res, next) => {
 //   //id is user id or cart id, do I need both?
