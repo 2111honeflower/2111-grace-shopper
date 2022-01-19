@@ -47,6 +47,8 @@ const mapState = (state) => ({
     auth: state.auth
 })
 
+const mapDispatch = (dispatch) => ({
+  getCart: (id) => dispatch(createCart(id))
+})
 
-
-export default connect(mapState, null)(Home);
+export default connect(mapState, mapDispatch)(Home);
