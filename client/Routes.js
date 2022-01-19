@@ -9,6 +9,7 @@ import SingleMovie from "./components/SingleMovie";
 import Cart from "./components/Cart"
 import Checkout from "./components/Checkout";
 import Confirmation from "./components/Confirmation";
+import Users from "./components/Admin/Users";
 
 /**
  * COMPONENT
@@ -32,6 +33,7 @@ class Routes extends Component {
             <Route path="/cart" component={Cart} />
             <Route path="/checkout" component={Checkout} />
             <Route exact path="/confirmation" component={Confirmation} />
+            <Route exact path="/users" component={Users} />
           </Switch>
         ) : (
           <Switch>
@@ -42,6 +44,7 @@ class Routes extends Component {
             <Route path="/cart" component={Cart} />
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path ="/confirmation" component={Confirmation} />
+            <Route exact path="/users" component={Users}/>
           </Switch>
         )}
       </div>
