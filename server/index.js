@@ -8,7 +8,7 @@ const init = async () => {
   try {
     if(process.env.SEED === 'true'){
       await seed();
-      await bulkSeed()
+//      await bulkSeed()
     }
     else {
       await db.sync()

@@ -4,10 +4,6 @@ import { Link } from 'react-router-dom';
 import { fetchUsers } from '../../store/users'
 import NewMovieForm from './NewMovieForm';
 import UpdateMovieForm from './UpdateMovieForm'
-<<<<<<< HEAD
-=======
-
->>>>>>> 5f58f82cd415ed27682abe64326777e1deeb94fc
 
 class Users extends React.Component {
 
