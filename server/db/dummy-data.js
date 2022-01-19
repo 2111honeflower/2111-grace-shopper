@@ -284,7 +284,7 @@ const movieCarts = [
   {
     quantity: 1,
     cartId: 3,
-    movieId: 1,
+    movieId: 5,
   },
   {
     quantity: 2,
