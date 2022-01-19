@@ -1,15 +1,23 @@
-const { models: { Movie, Cart, Movie_Cart },} = require('../db');
+const { Movie, Cart, Movie_Cart } = require('../db');
 const router = require('express').Router();
 
-//Create Read Update
+//Note: Create Read Update
 
-//GET /api/cart/:userId
+//Movie_Cart Routes
 
-router.get('/', async (req, res, next) =>{
+//GET /api/cart/:cartId
+//gets all the movies in the cart
+router.get('/:cartId', async (req, res, next) =>{
   try {
-
-  } catch (error) {
-
+    const cart = await Movie_Cart.findAll({
+      where: {
+        id: req.params.cartId
+      },
+      include: { model: Movie}
+    });
+    res.json(cart)
+  } catch (err) {
+    next(err);
   }
 })
 
