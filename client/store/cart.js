@@ -56,7 +56,7 @@ export default function getCartReducer(state = initialState, action) {
     case GET_CART:
       return action.cart
     case ADD_TO_CART:
-      return [action.cart]
+      return [...action.cart]
       default:
         return state
   }
