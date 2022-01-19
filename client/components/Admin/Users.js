@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { fetchUsers } from '../../store/users'
 import NewMovieForm from './NewMovieForm';
 import UpdateMovieForm from './UpdateMovieForm'
-import Button from 'react-bootstrap/Button';
 
 class Users extends React.Component {
 
@@ -15,12 +14,6 @@ class Users extends React.Component {
 
 
   render() {
-    const Columns = () => 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20 }}>
-        <div>Column 1</div>
-        <div>Column 2</div>
-        <div>Column 3</div>
-      </div>
       const userData = this.props.users;
       console.log(userData)
       const userList = userData.map((user) => (
