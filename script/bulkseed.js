@@ -30,6 +30,16 @@ for (let i = 0; i <= 100; i++) {
   });
 }
 
+//CREATE MOVIE/CART
+const fakeMovieCarts = [];
+for (let i = 0; i <= 100; i++) {
+  fakeMovieCarts.push({
+    quantity: faker.random.number(5),
+    movieId: faker.random.number(100),
+    cartId: i,
+  });
+}
+
 //CREATE FAKE CARTS
 const fakeCarts = [];
 for (let i = 1; i <= 100; i++) {
@@ -63,7 +73,7 @@ const bulkSeed = async () => {
       })
     );
     await Promise.all(
-      movieCart.map((moviecart) => {
+      fakeMovieCarts.map((moviecart) => {
         return Movie_Cart.create(moviecart);
       })
     );

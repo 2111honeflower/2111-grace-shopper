@@ -1,20 +1,24 @@
+
 import axios from "axios";
 import history from "../history";
 
 const TOKEN = "token";
 
+
 /**
  * ACTION TYPES
  */
+
 const SET_AUTH = "SET_AUTH";
+
 
 /**
  * ACTION CREATORS
  */
-const setAuth = (auth) => {
 
-  return { type: SET_AUTH, auth };
-};
+
+const setAuth = (auth) => ({ type: SET_AUTH, auth });
+
 
 /**
  * THUNK CREATORS
@@ -33,7 +37,6 @@ export const me = () => async (dispatch) => {
 };
 
 
-
 export const authenticateLogin =
   (password, email, method) => async (dispatch) => {
     try {
@@ -44,6 +47,7 @@ export const authenticateLogin =
       return dispatch(setAuth({ error: authError }));
     }
   };
+
 
 export const authenticateSignup =
   (userName, password, email, method) => async (dispatch) => {
@@ -62,7 +66,7 @@ export const authenticateSignup =
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN);
-  history.push("/");
+  history.push("/login");
   return {
     type: SET_AUTH,
     auth: {},
@@ -76,7 +80,6 @@ export default function (state = {}, action) {
   switch (action.type) {
     case SET_AUTH:
       return action.auth;
-
     default:
       return state;
   }
