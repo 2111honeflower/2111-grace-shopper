@@ -3,10 +3,11 @@ const db = require('../db');
 
 const Movie_Cart = db.define('Movie_Cart', {
     quantity: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 1,
     },
     //Cara's note was to have pivot table have a snap shot of cart
-    //populate upon purchase/places status change - clarification needed. 
+    //populate upon purchase/places status change - clarification needed.
 
 })
 
