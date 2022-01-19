@@ -30,10 +30,10 @@ for (let i = 0; i <= 100; i++) {
 }
 
 //CREATE MOVIE/CART
-const movieCart = [];
+const fakeMovieCarts = [];
 for (let i = 0; i <= 100; i++) {
-  movieCart.push({
-    quantity: faker.lorem.word(),
+  fakeMovieCarts.push({
+    quantity: faker.random.number(5),
     movieId: faker.random.number(100),
     cartId: i,
   });
@@ -72,7 +72,7 @@ const bulkSeed = async () => {
       })
     );
     await Promise.all(
-      movieCart.map((moviecart) => {
+      fakeMovieCarts.map((moviecart) => {
         return Movie_Cart.create(moviecart);
       })
     );
