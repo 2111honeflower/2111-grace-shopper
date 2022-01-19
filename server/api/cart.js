@@ -8,7 +8,7 @@ const router = require('express').Router();
 //do we want less info? I tried and couldn't figure it out...
 router.get('/:cartId', async (req, res, next) =>{
   try {
-    const cart = await Cart.findAll({
+    const cart = await Cart.findOne({
       where: {
         id: req.params.cartId
       },
@@ -20,11 +20,11 @@ router.get('/:cartId', async (req, res, next) =>{
   }
 });
 
-router.post('/:cartId', async (req, res, next) => {
+//What am I creating here? An instance on Movie_Cart or Cart?
+//Sarah said Movie_Cart, but it would have to be created in cart first...
 
-});
 // router.post('/:id', async (req, res, next) => {
-//   //id is user id
+//   //id is user id or cart id, do I need both?
 //   //if cart, add item using movie_cart with movieId and Quantity
 //   //send those items
 
