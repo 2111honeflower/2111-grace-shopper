@@ -1,8 +1,6 @@
 const { models: { Movie, Cart, Movie_Cart }} = require('../db');
 const router = require('express').Router();
 
-//Note: Create Update
-
 //GET /api/cart/:cartId
 //gets the cart data, movies in the cart and movie_cart association table
 //do we want less info? I tried and couldn't figure it out...
@@ -21,15 +19,7 @@ router.get('/:cartId', async (req, res, next) =>{
 });
 
 //create cart
-//create Movie_Cart Instance
-  //if cart, add item using movie_cart with movieId and Quantity
-  //send those items
-  //we're always going to send movie data to movie_cart
-//edit cart
-//edit Movie_Cart Instance
-//change status on cart - part of edit route
-//delete Movie_Cart Instance
-
+//POST /api/cart/:userId
 router.post('/:id', async (req, res, next) => {
   //id is user id
   //should be able to push local storage with this route as well
@@ -49,5 +39,19 @@ router.post('/:id', async (req, res, next) => {
     next(err);
   }
 });
+
+//create Movie_Cart Instance
+//POST /api/cart/:cartId
+router.post('/:cartId', async (req, res,next) => {
+
+})
+  //if cart, add item using movie_cart with movieId and Quantity
+  //send those items
+  //we're always going to send movie data to movie_cart
+//edit cart (includes status)
+//edit Movie_Cart Instance
+//delete Movie_Cart Instance
+
+
 
 module.exports = router;
