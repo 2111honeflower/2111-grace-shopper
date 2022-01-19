@@ -17,7 +17,7 @@ export const getCart = (cart) => {
 
 export const addToCart = (movie, quantity = 1) => ({
   type: ADD_TO_CART,
-  movie, 
+  movie,
   quantity
 })
 

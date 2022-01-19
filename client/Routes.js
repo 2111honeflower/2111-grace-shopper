@@ -11,6 +11,7 @@ import Checkout from "./components/Checkout";
 import Confirmation from "./components/Confirmation";
 import Users from "./components/Admin/Users";
 import User from "./components/Admin/User"
+import AllMovies from "./components/AllMovies"
 
 /**
  * COMPONENT
@@ -18,6 +19,7 @@ import User from "./components/Admin/User"
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
+
   }
 
   render() {
@@ -38,6 +40,7 @@ class Routes extends Component {
             <Route exact path="/users/:id" component={User} />
             <Redirect to = "/home" />
           </Switch>
+
         ) : (
           <Switch>
             <Route exact path="/" exact component={HomePage} />
@@ -51,7 +54,7 @@ class Routes extends Component {
           </Switch>
         )}
       </div>
-    ); 
+    );
   }
 }
 
@@ -62,7 +65,7 @@ const mapState = (state) => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
     // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
-    isLoggedIn: !!state.auth.id,
+    isLoggedIn: state.auth.id,
   };
 };
 
