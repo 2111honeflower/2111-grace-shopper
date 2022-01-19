@@ -26,13 +26,13 @@ for (let i = 0; i <= 100; i++) {
     imageUrl: faker.image.imageUrl(208, 288),
     description: faker.lorem.slug(),
     price: 2.99,
-    genre: faker.lorem.word()
+    genre: faker.lorem.word(),
   });
 }
 
 //CREATE MOVIE/CART
 const fakeMovieCarts = [];
-for (let i = 0; i <= 100; i++) {
+for (let i = 1; i <= 100; i++) {
   fakeMovieCarts.push({
     quantity: faker.random.number(5),
     movieId: faker.random.number(100),
