@@ -47,16 +47,19 @@ class Checkout extends Component {
     const cartMovies = JSON.parse(localStorage.getItem("products"));
     let itemsTotal = 0;
     let totalPrice = 0;
+    let b4taxed = 0;
+    let tax = 0;
+    let finalTotal = 0;
 
-    cartMovies.filter((movie) => {
-      itemsTotal += movie.qty;
-      totalPrice += (movie.price * movie.qty).toFixed(2);
-    });
-
-    let b4taxed = (Number(totalPrice) + 5.99).toFixed(2);
-
-    let tax = (b4taxed * 0.065).toFixed(2);
-    let finalTotal = (Number(b4taxed) + Number(tax)).toFixed(2);
+    if (cartMovies) {
+      cartMovies.filter((movie) => {
+        itemsTotal += movie.qty;
+        totalPrice = Number(totalPrice) + (movie.price * movie.qty);
+      });
+      b4taxed = (Number(totalPrice) + 5.99);
+      tax = (Number(b4taxed) * 0.065);
+      finalTotal = (Number(b4taxed) + Number(tax));
+    }
 
     return (
       <div>
@@ -82,7 +85,7 @@ class Checkout extends Component {
               <h2>Order Summary:</h2>
               <div>
                 <h3>Items({itemsTotal}):</h3>
-                <h3>${totalPrice}</h3>
+                <h3>${totalPrice.toFixed(2)}</h3>
               </div>
               <div>
                 <h3>Shipping & Handling:</h3>
@@ -90,15 +93,15 @@ class Checkout extends Component {
               </div>
               <div>
                 <h3>Total before tax:</h3>
-                <h3>{b4taxed}</h3>
+                <h3>${b4taxed.toFixed(2)}</h3>
               </div>
               <div>
                 <h3>Estimated tax to be collected:</h3>
-                <h3>{tax}</h3>
+                <h3>${tax.toFixed(2)}</h3>
               </div>
               <div>
                 <h1 id="total">Order total:</h1>
-                <h1>{finalTotal}</h1>
+                <h1>${finalTotal.toFixed(2)}</h1>
               </div>
             </div>
           </div>
@@ -106,37 +109,39 @@ class Checkout extends Component {
 
         <div id="cart">
           <h1>Review Order: </h1>
-          {cartMovies.map((movie) => {
-            return (
-              <div className="cart-items" key={movie.id}>
-                <Link to={`/movies/${movie.id}`} className="product">
-                  <img src={movie.imageUrl} />
-                  &nbsp; &nbsp;
-                  <h2>{movie.name}</h2>
-                </Link>
+          {cartMovies
+            ? cartMovies.map((movie) => {
+                return (
+                  <div className="cart-items" key={movie.id}>
+                    <Link to={`/movies/${movie.id}`} className="product">
+                      <img src={movie.imageUrl} />
+                      &nbsp; &nbsp;
+                      <h2>{movie.name}</h2>
+                    </Link>
 
-                <h2>${(movie.price * movie.qty).toFixed(2)}</h2>
-                <h3 id="cart-qty">
-                  Qty:
-                  <input
-                    type="number"
-                    min="1"
-                    max="10"
-                    defaultValue={movie.qty}
-                    onClick={(event) => this.handleSubmit(movie.id, event)}
-                  />
-                </h3>
+                    <h2>${(movie.price * movie.qty).toFixed(2)}</h2>
+                    <h3 id="cart-qty">
+                      Qty:
+                      <input
+                        type="number"
+                        min="1"
+                        max="10"
+                        defaultValue={movie.qty}
+                        onClick={(event) => this.handleSubmit(movie.id, event)}
+                      />
+                    </h3>
 
-                <button
-                  type="submit"
-                  onClick={(event) => this.handleClick(movie.id, event)}
-                  id="delete-button"
-                >
-                  <img src="https://www.shareicon.net/data/512x512/2016/09/10/827820_delete_512x512.png" />
-                </button>
-              </div>
-            );
-          })}
+                    <button
+                      type="submit"
+                      onClick={(event) => this.handleClick(movie.id, event)}
+                      id="delete-button"
+                    >
+                      <img src="https://www.shareicon.net/data/512x512/2016/09/10/827820_delete_512x512.png" />
+                    </button>
+                  </div>
+                );
+              })
+            : ""}
         </div>
 
         <div id="end-purchase">
@@ -145,7 +150,7 @@ class Checkout extends Component {
               Confirm Purchase
             </button>
           </Link>
-          <h1>Order Total: {finalTotal}</h1>
+          <h1>Order Total: ${finalTotal.toFixed(2)}</h1>
         </div>
       </div>
     );
