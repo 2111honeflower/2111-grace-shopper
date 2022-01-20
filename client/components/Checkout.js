@@ -24,12 +24,13 @@ class Checkout extends Component {
     this.changeQty(id, event);
     this.forceUpdate();
   }
+
   changeQty(id, event) {
     let cartMovies = JSON.parse(localStorage.getItem("products"));
-
+    console.log(cartMovies, "cart movies");
+    const quantity = Number(event.target.value);
     cartMovies.filter((movie) => {
       if (movie.id === id) {
-        const quantity = Number(event.target.value);
         movie.qty = quantity;
       }
     });
@@ -46,12 +47,16 @@ class Checkout extends Component {
     const cartMovies = JSON.parse(localStorage.getItem("products"));
     let itemsTotal = 0;
     let totalPrice = 0;
+
     cartMovies.filter((movie) => {
       itemsTotal += movie.qty;
       totalPrice += (movie.price * movie.qty).toFixed(2);
     });
-    let b4taxed = totalPrice + 5.99;
-    let tax = b4taxed * 0.065;
+
+    let b4taxed = (Number(totalPrice) + 5.99).toFixed(2);
+
+    let tax = (b4taxed * 0.065).toFixed(2);
+    let finalTotal = (Number(b4taxed) + Number(tax)).toFixed(2);
 
     return (
       <div>
@@ -93,56 +98,54 @@ class Checkout extends Component {
               </div>
               <div>
                 <h1 id="total">Order total:</h1>
-                <h1>{b4taxed + tax}</h1>
+                <h1>{finalTotal}</h1>
               </div>
             </div>
           </div>
         </div>
 
+        <div id="cart">
+          <h1>Review Order: </h1>
+          {cartMovies.map((movie) => {
+            return (
+              <div className="cart-items" key={movie.id}>
+                <Link to={`/movies/${movie.id}`} className="product">
+                  <img src={movie.imageUrl} />
+                  &nbsp; &nbsp;
+                  <h2>{movie.name}</h2>
+                </Link>
 
-          <div id="cart">
-          <h1 >Review Order: </h1>
-            {cartMovies.map((movie) => {
-              return (
-                <div className="cart-items" key={movie.id}>
-                  <Link to={`/movies/${movie.id}`} className="product">
-                    <img src={movie.imageUrl} />
-                    &nbsp; &nbsp;
-                    <h2>{movie.name}</h2>
-                  </Link>
+                <h2>${(movie.price * movie.qty).toFixed(2)}</h2>
+                <h3 id="cart-qty">
+                  Qty:
+                  <input
+                    type="number"
+                    min="1"
+                    max="10"
+                    defaultValue={movie.qty}
+                    onClick={(event) => this.handleSubmit(movie.id, event)}
+                  />
+                </h3>
 
-                  <h2>${(movie.price * movie.qty).toFixed(2)}</h2>
-                  <h3 id="cart-qty">
-                    Qty:
-                    <input
-                      type="number"
-                      min="1"
-                      max="10"
-                      defaultValue={movie.qty}
-                      onClick={(event) => this.handleSubmit(movie.id, event)}
-                    />
-                  </h3>
+                <button
+                  type="submit"
+                  onClick={(event) => this.handleClick(movie.id, event)}
+                  id="delete-button"
+                >
+                  <img src="https://www.shareicon.net/data/512x512/2016/09/10/827820_delete_512x512.png" />
+                </button>
+              </div>
+            );
+          })}
+        </div>
 
-                  <button
-                    type="submit"
-                    onClick={(event) => this.handleClick(movie.id, event)}
-                    id="delete-button"
-                  >
-                    <img src="https://www.shareicon.net/data/512x512/2016/09/10/827820_delete_512x512.png" />
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-
-
-            <div id="end-purchase">
-        <Link to={`/confirmation`} id="purchase-button-2">
-          <button type="submit" onClick={this.finalPurchase}>
-            Confirm Purchase
-          </button>
-        </Link>
-        <h1>Order Total: {b4taxed + tax}</h1>
+        <div id="end-purchase">
+          <Link to={`/confirmation`} id="purchase-button-2">
+            <button type="submit" onClick={this.finalPurchase}>
+              Confirm Purchase
+            </button>
+          </Link>
+          <h1>Order Total: {finalTotal}</h1>
         </div>
       </div>
     );
