@@ -29,7 +29,7 @@ class Home extends React.Component {
     } else {
       return (
         <div>
-          <h3>Hello!</h3>
+          <h3>Welcome!</h3>
           <AllMovies />
         </div>
       );

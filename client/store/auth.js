@@ -17,7 +17,7 @@ const LOG_OUT = "LOG_OUT"
  */
 
 const setAuth = (auth) => ({ type: SET_AUTH, auth });
-
+const logOut = (auth) => ({type: LOG_OUT, auth})
 /**
  * THUNK CREATORS
  */
@@ -63,11 +63,9 @@ export const authenticateSignup =
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN);
+localStorage.clear()
+  return logOut({auth: {}})
 
-  return {
-    type: SET_AUTH,
-    auth: {},
-  };
 };
 
 /**
@@ -79,7 +77,7 @@ export default function (state = {}, action) {
     case SET_AUTH:
       return {...state, ...action.auth};
       case LOG_OUT:
-        return state
+        return action.auth
     default:
       return state;
   }
