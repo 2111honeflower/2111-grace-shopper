@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { addingToCart } from "../store/cart";
 import { fetchSingleMovie } from "../store/singleMovie";
 
@@ -37,7 +36,6 @@ class SingleMovie extends React.Component {
 
     localStorage.setItem("products", JSON.stringify(products));
     document.getElementById("single-movie-qty").reset();
-    // this.forceUpdate()
   }
 
   render() {
@@ -52,7 +50,7 @@ class SingleMovie extends React.Component {
           <h2>Description: {movie.description}</h2>
           <p>Genre: {movie.genre}</p>
           <form id="single-movie-qty">
-            <input type="number" min="1" max="10" id="input-qty" placeholder="1"/>
+            <input type="number" min="1" max="10" id="input-qty" defaultValue="1" />
             <input
               type="submit"
               value="Add To Cart"
