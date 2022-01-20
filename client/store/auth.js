@@ -10,6 +10,7 @@ const TOKEN = "token";
  */
 
 const SET_AUTH = "SET_AUTH";
+const LOG_OUT = "LOG_OUT"
 
 /**
  * ACTION CREATORS
@@ -62,7 +63,7 @@ export const authenticateSignup =
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN);
-  history.push("/login");
+
   return {
     type: SET_AUTH,
     auth: {},
@@ -73,10 +74,12 @@ export const logout = () => {
  * REDUCER
  */
 export default function (state = {}, action) {
-  // console.log(action, "ACTION")
+
   switch (action.type) {
     case SET_AUTH:
       return {...state, ...action.auth};
+      case LOG_OUT:
+        return state
     default:
       return state;
   }
