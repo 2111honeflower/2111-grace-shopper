@@ -10,7 +10,7 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
       <h1>HONEFLOWER MOVIES</h1>
     </div>
     <nav>
-    {isAdmin === true ? (
+    {isAdmin ? (
       <Link to = "/users">Admin</Link>
     ) : (
       ""
@@ -46,7 +46,7 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
 const mapState = (state) => {
   return {
     isLoggedIn: state.auth.id,
-    isAdmin: state.auth.id
+    isAdmin: state.auth.isAdmin
   };
 };
 
