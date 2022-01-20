@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../store";
-import history from "../history";
 
 const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
   <div>
@@ -11,13 +10,10 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
       <h1>HONEFLOWER MOVIES</h1>
     </div>
     <nav>
-    {isAdmin ? (
-      <Link to = "/users">Admin</Link>
-    ) : (
-      ""
-    )}
+      {isAdmin ? <Link to="/users">Admin</Link> : ""}
 
       <Link to="/">Browse All</Link>
+
       {isLoggedIn ? (
         <div>
           <a href="/" onClick={handleClick}>
@@ -41,22 +37,17 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
   </div>
 );
 
-/**
- * CONTAINER
- */
 const mapState = (state) => {
   return {
     isLoggedIn: state.auth.id,
-    isAdmin: state.auth.isAdmin
+    isAdmin: state.auth.isAdmin,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     handleClick() {
-
       dispatch(logout());
-
     },
   };
 };
