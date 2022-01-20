@@ -73,7 +73,7 @@ export class Cart extends React.Component {
                           <h3>{movie.name}</h3>
                         </Link>
 
-                        <h3>${movie.price}</h3>
+                        <h3>${movie.price * movie.qty}</h3>
                         <div id="qty-buttons">
                           <h3 id="cart-qty">Qty: {movie.qty}</h3>
                           <button

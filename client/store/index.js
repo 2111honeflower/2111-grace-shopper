@@ -15,7 +15,7 @@ const reducer = combineReducers({
   movie: movieReducer,
   users: usersReducer,
   user: singleUserReducer,
-  getCartReducer,
+  cart: getCartReducer,
 });
 
 const middleware = composeWithDevTools(
