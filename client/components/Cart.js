@@ -31,7 +31,6 @@ export class Cart extends React.Component {
         movie.qty = quantity;
       }
     });
-    console.log(cartMovies);
     localStorage.setItem("products", JSON.stringify(cartMovies));
   }
 

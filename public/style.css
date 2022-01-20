@@ -109,6 +109,28 @@ nav img {
   color: white;
   font-weight: bold;
 }
+#purchase-button button {
+  background-color: #2a9d8f;
+  border-radius: 2rem;
+  width: 25rem;
+  height: 3rem;
+  font-size: 1.25rem;
+  color: white;
+  font-weight: bold;
+  font-family: "Special Elite", cursive;
+}
+#purchase-button-2 button {
+  background-color: #2a9d8f;
+  border-radius: 2rem;
+  width: 25rem;
+  height: 3rem;
+  font-size: 1.25rem;
+  color: white;
+  font-weight: bold;
+  font-family: "Special Elite", cursive;
+
+
+}
 
 #all-movies {
   display: flex;
@@ -211,4 +233,73 @@ nav img {
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   opacity: 1;
+}
+
+#checkout-feats {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6rem;
+}
+#ship-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: 2.5rem;
+  margin: 0 5rem 1rem 4rem;
+  width: 75rem;
+  border: 1rem solid #2a9d8f;
+  padding: 2rem;
+
+}
+#ship-info input{
+  font-size: 2rem;
+  font-family: "Special Elite", cursive;
+}
+#ord-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  width:38rem;
+  height: 40rem;
+  align-items: center;
+  margin: 4rem 13rem 1rem 8rem;
+  border: .5rem solid black;
+  font-family: "Special Elite", cursive;
+}
+#ord-details{
+  width: 36rem
+}
+#ord-details div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#ord-details h1 {
+  color: red;
+  font-family: "Bungee Shade", cursive;
+}
+#ord-details h2 {
+  color: #2a9d8f;
+  font-family: "Bungee Shade", cursive;
+}
+
+#cart h1{
+margin-left: 2rem;
+  font-size: 2.5rem;
+  font-family: "Bungee Shade", cursive;
+}
+
+#end-purchase {
+  display:flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+border: .25rem solid #2a9d8f;
+margin: 4rem 20rem 4rem 20rem;
+padding: 2rem;
+font-family: "Special Elite", cursive;;
 }
