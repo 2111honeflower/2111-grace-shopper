@@ -7,12 +7,34 @@ const router = require('express').Router();
 //do we want less info? I tried and couldn't figure it out...
 router.get('/:cartId', async (req, res, next) =>{
   try {
-    const cart = await Cart.findOne({
+    // const cart = await Movie_Cart.findAll({
+    //   where: {
+    //     cartId: req.params.cartId
+    //   }
+    // })
+    const cart = await Cart.findAll({
       where: {
-        id: req.params.cartId
+        cartId: req.params.cartId
       },
-      include: { model: Movie }
-    });
+      include: [
+        {
+          model: Movie,
+          through: { attributes: [] }
+        }
+    ]})
+      // const movies = await cart.map((movie) =>{ return Movie.findByPk(movie.movieId)}
+      // )
+  //   const cart = await Cart.findOne({
+  //     where: {
+  //       id: req.params.cartId
+  //     },
+  //     include: [{ model: Movie_Cart,
+  //       where: {
+  //         cartId: req.params.cartId
+  //       }
+  //     }
+  //   ]
+  // });
     res.json(cart)
   } catch (err) {
     next(err);

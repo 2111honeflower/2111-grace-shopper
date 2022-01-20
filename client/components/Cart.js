@@ -11,6 +11,9 @@ export class Cart extends React.Component {
     this.deleteFromCart = this.deleteFromCart.bind(this);
     this.changeQty = this.changeQty.bind(this);
   }
+  componentDidMount(){
+
+  }
 
   handleClick(id, event) {
     event.preventDefault();
@@ -101,12 +104,11 @@ export class Cart extends React.Component {
   }
 }
 
-const mapState = (state) => {
-  return {
-    thisCart: state.cart,
+const mapState = (state) => ({
+
     movies: state.movies,
-  };
-};
+
+});
 
 const mapDispatch = (dispatch) => {
   return {

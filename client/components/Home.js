@@ -13,7 +13,7 @@ class Home extends React.Component {
   }
   componentDidMount() {
 
-  this.props.getCart(this.props.id)
+   this.props.getCart(this.props.id)
 
   }
 

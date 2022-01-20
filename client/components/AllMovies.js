@@ -27,6 +27,7 @@ class AllMovies extends React.Component {
           <h3>{movie.name}</h3>
           <img src={movie.imageUrl} />
         </Link>
+        {this.props.isAdmin ? <button type="submit" onClick={(event) => this.handleClick(movie.id, event)}>X</button> : ""}
       </div>
     ));
 
@@ -43,6 +44,7 @@ class AllMovies extends React.Component {
 
 const mapState = (state) => ({
   movies: state.movies,
+  isAdmin: state.auth.isAdmin
 });
 
 const mapDispatch = (dispatch) => ({

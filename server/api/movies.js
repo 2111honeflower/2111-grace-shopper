@@ -38,7 +38,7 @@ router.post('/', isAdmin, async (req, res, next) => {
 });
 
 //DELETE /api/movies/:id
-router.delete('/:id', isAdmin, async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
   try {
     const movie = await Movie.findByPk(req.params.id);
     await movie.destroy();

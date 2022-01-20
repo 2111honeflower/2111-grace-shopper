@@ -9,6 +9,7 @@ import usersReducer from './users';
 import singleUserReducer from './user';
 import getCartReducer from './cart';
 
+
 const reducer = combineReducers({
   auth: auth,
   movies: moviesReducer,
@@ -16,6 +17,7 @@ const reducer = combineReducers({
   users: usersReducer,
   user: singleUserReducer,
   cart: getCartReducer,
+
 });
 
 const middleware = composeWithDevTools(
