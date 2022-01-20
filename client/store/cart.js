@@ -24,6 +24,7 @@ export const fetchCart = (cartId) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`/api/cart/${cartId}`);
+
       dispatch(getCart(data));
     } catch (err) {
       console.error("fetchCart thunk", err);
@@ -43,11 +44,12 @@ export const addingToCart = (movieId) => {
   };
 };
 
-//REDUCER
+//REDUCERS
+
 export default function getCartReducer(state = [], action) {
   switch (action.type) {
     case GET_CART:
-      return action.cart;
+      return [...state, ...action.cart];
     case ADD_TO_CART:
       return [state, ...action.cart];
     case SET_CART: {
