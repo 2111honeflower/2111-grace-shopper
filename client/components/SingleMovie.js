@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addingToCart } from "../store/cart";
 import { fetchSingleMovie } from "../store/singleMovie";
 
 class SingleMovie extends React.Component {
@@ -14,9 +13,9 @@ class SingleMovie extends React.Component {
 
   addToCart(event) {
     event.preventDefault();
-    let quantity =
-      document.getElementById("single-movie-qty").elements[0].value;
-    let movie = this.props.movie;
+    const quantity =
+      Number(document.getElementById("single-movie-qty").elements[0].value);
+    const movie = this.props.movie;
     let products = [];
     let double = false;
     if (localStorage.getItem("products")) {
@@ -24,9 +23,9 @@ class SingleMovie extends React.Component {
     }
     products.filter((cartMovie) => {
       if (cartMovie.id === movie.id) {
-        let oldQty = Number(cartMovie.qty);
-        let newQty = oldQty + Number(quantity);
-        cartMovie.qty = `${newQty}`;
+        let oldQty = cartMovie.qty;
+        let newQty = oldQty + quantity;
+        cartMovie.qty = newQty;
         double = true;
       }
     });
@@ -50,7 +49,7 @@ class SingleMovie extends React.Component {
           <h2>Description: {movie.description}</h2>
           <p>Genre: {movie.genre}</p>
           <form id="single-movie-qty">
-            <input type="number" min="1" max="10" id="input-qty" defaultValue="1" />
+            <input  type="number" min="1" max="10" id="input-qty" defaultValue="1" />
             <input
               type="submit"
               value="Add To Cart"
@@ -70,7 +69,6 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
   getMovie: (id) => dispatch(fetchSingleMovie(id)),
-  addMovieToCart: (movie, quantity) => dispatch(addingToCart(movie, quantity)),
 });
 
 export default connect(mapState, mapDispatch)(SingleMovie);

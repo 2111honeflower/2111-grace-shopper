@@ -22,26 +22,16 @@ export class Cart extends React.Component {
     this.changeQty(id, event);
     this.forceUpdate();
   }
-  changeQty(id, event, movieQty) {
+  changeQty(id, event) {
     let cartMovies = JSON.parse(localStorage.getItem("products"));
-    let change = document.getElementById(event.target.id).innerHTML;
 
-    if(movieQty === 1 && change === "-"){
-
-    }
     cartMovies.filter((movie) => {
-      let quantity = Number(movie.qty);
-
       if (movie.id === id) {
-        if (change === "+") {
-          quantity += 1;
-        } else {
-          quantity -= 1;
-        }
-        movie.qty = `${quantity}`;
+        const quantity = Number(event.target.value);
+        movie.qty = quantity;
       }
     });
-
+    console.log(cartMovies);
     localStorage.setItem("products", JSON.stringify(cartMovies));
   }
 
@@ -74,28 +64,18 @@ export class Cart extends React.Component {
                         </Link>
 
                         <h3>${(movie.price * movie.qty).toFixed(2)}</h3>
-                        <div id="qty-buttons">
-                          <h3 id="cart-qty">Qty: {movie.qty}</h3>
-                          <button
-                            type="submit"
-                            id="+"
-                            onClick={(event) =>
-                              this.handleSubmit(movie.id, event, movie.qty)
-                            }
-                          >
-                            +
-                          </button>
-                          <button
-                            type="submit"
-                            id="-"
-                            onClick={(event) =>
-                              this.handleSubmit(movie.id, event)
-                            }
-                          >
-                            -
-                          </button>
-                        </div>
+                        <h3 id="cart-qty">Qty:
+                        <input
+                          type="number"
+                          min="1"
+                          max="10"
 
+                          defaultValue={movie.qty}
+                          onClick={(event) =>
+                            this.handleSubmit(movie.id, event)
+                          }
+                        />
+</h3>
                         <button
                           type="submit"
                           onClick={(event) => this.handleClick(movie.id, event)}

@@ -35,12 +35,11 @@ nav {
   align-items: flex-end;
   font-size: 2rem;
   margin: 0 1.25rem 0 0;
-  height:2rem
-
+  height: 2rem;
 }
 nav img {
-  width:3rem;
-  height: 2.5rem
+  width: 3rem;
+  height: 2.5rem;
 }
 
 #header {
@@ -49,13 +48,13 @@ nav img {
   align-items: center;
   justify-items: left;
   font-size: 2.75rem;
-  margin: 0rem 2rem 0 2rem
+  margin: 0rem 2rem 0 2rem;
 }
 #header h1 {
   margin: 3rem;
 }
 #header img {
-  margin-top: 2rem
+  margin-top: 2rem;
 }
 #cart {
   margin: 4rem 20rem 4rem 20rem;
@@ -76,15 +75,15 @@ nav img {
   align-items: center;
   justify-content: left;
   width: 25rem;
-  margin-right: 5rem
+  margin-right: 5rem;
 }
 
 .product img {
   width: 11rem;
-  height: 14rem
+  height: 14rem;
 }
 #delete-button {
-  height:2rem;
+  height: 2rem;
   width: 2rem;
   background-color: white;
   text-align: center;
@@ -94,14 +93,12 @@ nav img {
 #delete-button img {
   height: 2rem;
   width: 2rem;
-
 }
 
 #checkout-button {
   display: flex;
   justify-content: right;
   margin: 0 20rem 15rem 0;
-
 }
 #checkout-button button {
   background-color: #2a9d8f;
@@ -109,9 +106,8 @@ nav img {
   width: 13rem;
   height: 6rem;
   font-size: 1.25rem;
-  color:white;
-  font-weight:bold;
-
+  color: white;
+  font-weight: bold;
 }
 
 #all-movies {
@@ -141,7 +137,7 @@ nav img {
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  margin: 3rem 0 0 0
+  margin: 3rem 0 0 0;
 }
 
 .single-movie img {
@@ -155,33 +151,64 @@ nav img {
 }
 #single-movie-details input {
   display: flex;
-  flex-direction: row
+  flex-direction: row;
+}
+#single-movie-qty {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
 }
 #input-qty {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
   text-align: center;
-  font-size: 1.5rem
+  font-size: 1.5rem;
+  border-radius: .5rem;
+  border: 0.1rem solid #2a9d8f;
+  margin: 0 1rem 0 0;
+}
+#input-qty :focus {
+  outline: none
 }
 #input-button {
   width: 6rem;
   height: 2rem;
   border-radius: 2rem;
-  background-color: #2a9d8f
+  background-color: #2a9d8f;
+  font-family: "Special Elite", cursive;
 }
 
-#qty-buttons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-#qty-buttons button{
-  height: 4rem;
-  width: 2rem;
-  background-color: white;
-  font-size: 2rem;
+#cart-qty input {
+  border-style: hidden;
+  height: 3rem;
+  width: 3rem;
+  font-family: "Special Elite", cursive;
+  font-size: 1.5rem;
   text-align: center;
-  border: 0 solid white;
+  color: black;
+}
 
-  color: #2a9d8f
+#cart-qty :focus {
+  outline: none;
+}
+
+#cart-qty {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  height: 3rem;
+  width: 7rem;
+  font-size: 1.5rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #2a9d8f;
+  color: black;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
 }
