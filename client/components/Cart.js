@@ -60,22 +60,22 @@ export class Cart extends React.Component {
                         <Link to={`/movies/${movie.id}`} className="product">
                           <img src={movie.imageUrl} />
                           &nbsp; &nbsp;
-                          <h3>{movie.name}</h3>
+                          <h2>{movie.name}</h2>
                         </Link>
 
-                        <h3>${(movie.price * movie.qty).toFixed(2)}</h3>
-                        <h3 id="cart-qty">Qty:
-                        <input
-                          type="number"
-                          min="1"
-                          max="10"
-
-                          defaultValue={movie.qty}
-                          onClick={(event) =>
-                            this.handleSubmit(movie.id, event)
-                          }
-                        />
-</h3>
+                        <h2>${(movie.price * movie.qty).toFixed(2)}</h2>
+                        <h3 id="cart-qty">
+                          Qty:
+                          <input
+                            type="number"
+                            min="1"
+                            max="10"
+                            defaultValue={movie.qty}
+                            onClick={(event) =>
+                              this.handleSubmit(movie.id, event)
+                            }
+                          />
+                        </h3>
                         <button
                           type="submit"
                           onClick={(event) => this.handleClick(movie.id, event)}

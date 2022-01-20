@@ -10,8 +10,8 @@ class Checkout extends Component {
     this.deleteFromCart = this.deleteFromCart.bind(this);
   }
 
-  finalPurchase(){
-    localStorage.clear()
+  finalPurchase() {
+    localStorage.clear();
   }
 
   handleClick(id, event) {
@@ -31,58 +31,58 @@ class Checkout extends Component {
 
     return (
       <div>
-        <div>
-          <form>
-            <label>Your Name: </label>
-            <input type="text" placeholder="Enter your name here" />
-            <label>Email:</label>
-            <input type="text" placeholder="example@domain.com" />
-            <label>Shipping Address:</label>
-            <input type="text" />
-            <label htmlFor="ccn">Credit Card Number:</label>
-            <input maxLength="19" placeholder="xxxx xxxx xxxx xxxx" />
-          </form>
-        </div>{" "}
-        .
-        <div style={{ position: "absolute", left: 200 }}>
-          <div>
-            <h2>Review Order: </h2>
-            <div id="cart" style={{ alignItems: "left" }}>
-              {cartMovies.length > 0
-                ? cartMovies.map((movie) => {
-                    return (
-                      <div className="cart-items" key={movie.id}>
-                        <Link to={`/movies/${movie.id}`} className="product">
-                          <img src={movie.imageUrl} />
-                          &nbsp; &nbsp;
-                          <h3>{movie.name}</h3>
-                        </Link>
+        <form id="ship-info">
+          <label>Your Name: </label>
+          <input type="text" placeholder="Enter your name here" />
+          <label>Email:</label>
+          <input type="text" placeholder="example@domain.com" />
+          <label>Shipping Address:</label>
+          <input type="text" />
+          <label htmlFor="ccn">Credit Card Number:</label>
+          <input maxLength="19" placeholder="xxxx xxxx xxxx xxxx" />
+        </form>
+      <div id="ord-summary"></div>
+        <h2>Review Order: </h2>
+        <div id="cart" style={{ alignItems: "left" }}>
+          {cartMovies.map((movie) => {
+            return (
+              <div className="cart-items" key={movie.id}>
+                <Link to={`/movies/${movie.id}`} className="product">
+                  <img src={movie.imageUrl} />
+                  &nbsp; &nbsp;
+                  <h2>{movie.name}</h2>
+                </Link>
 
-                        <h4>${movie.price}</h4>
+                <h2>${(movie.price * movie.qty).toFixed(2)}</h2>
+                <h3 id="cart-qty">
+                  Qty:
+                  <input
+                    type="number"
+                    min="1"
+                    max="10"
+                    defaultValue={movie.qty}
+                    onClick={(event) => this.handleSubmit(movie.id, event)}
+                  />
+                </h3>
 
-                        <h4>QUANTITY HERE</h4>
-
-                        <button
-                          type="submit"
-                          onClick={(event) => this.handleClick(movie.id, event)}
-                          id="delete-button"
-                        >
-                          <img src="https://www.shareicon.net/data/512x512/2016/09/10/827820_delete_512x512.png" />
-                        </button>
-                      </div>
-                    );
-                  })
-                : "Cart is Empty"}
-            </div>
-            {cartMovies.length > 0 ? (
-              <Link to={`/confirmation`} id="checkout-button">
-                <button type="submit" onClick={this.finalPurchase}> Confirm Purchase </button>
-              </Link>
-            ) : (
-              ""
-            )}
-          </div>
+                <button
+                  type="submit"
+                  onClick={(event) => this.handleClick(movie.id, event)}
+                  id="delete-button"
+                >
+                  <img src="https://www.shareicon.net/data/512x512/2016/09/10/827820_delete_512x512.png" />
+                </button>
+              </div>
+            );
+          })}
         </div>
+
+        <Link to={`/confirmation`} id="checkout-button">
+          <button type="submit" onClick={this.finalPurchase}>
+            Confirm Purchase
+          </button>
+        </Link>
+
       </div>
     );
   }
