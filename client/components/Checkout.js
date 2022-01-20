@@ -54,27 +54,42 @@ class Checkout extends Component {
     if (cartMovies) {
       cartMovies.filter((movie) => {
         itemsTotal += movie.qty;
-        totalPrice = Number(totalPrice) + (movie.price * movie.qty);
+        totalPrice = Number(totalPrice) + movie.price * movie.qty;
       });
-      b4taxed = (Number(totalPrice) + 5.99);
-      tax = (Number(b4taxed) * 0.065);
-      finalTotal = (Number(b4taxed) + Number(tax));
+      b4taxed = Number(totalPrice) + 5.99;
+      tax = Number(b4taxed) * 0.065;
+      finalTotal = Number(b4taxed) + Number(tax);
     }
 
     return (
       <div>
         <div id="checkout-feats">
-          <form id="ship-info">
-            <h2>Shipping & Handling:</h2>
-            <label>Your Name: </label>
-            <input type="text" placeholder="Enter your name here" />
-            <label>Email:</label>
-            <input type="text" placeholder="example@domain.com" />
-            <label>Shipping Address:</label>
-            <input type="text" placeholder="123 Main St." />
-            <label htmlFor="ccn">Credit Card Number:</label>
-            <input maxLength="19" placeholder="xxxx xxxx xxxx xxxx" />
-          </form>
+          {this.props.username ? (
+            <form id="ship-info">
+              <h2>Shipping & Handling:</h2>
+              <label>Your Name: </label>
+              <input type="text" defaultValue={this.props.username} />
+              <label>Email:</label>
+              <input type="text" defaultValue={this.props.email} />
+              <label>Shipping Address:</label>
+              <input type="text" defaultValue={this.props.address} />
+              <label htmlFor="ccn">Credit Card Number:</label>
+              <input maxLength="19" placeholder="xxxx xxxx xxxx xxxx" />{" "}
+            </form>
+          ) : (
+            <form id="ship-info">
+              <h2>Shipping & Handling:</h2>
+              <label>Your Name: </label>
+              <input type="text" placeholder="Enter your name here" />
+              <label>Email:</label>
+              <input type="text" placeholder="example@domain.com" />
+              <label>Shipping Address:</label>
+              <input type="text" placeholder="123 Main St." />
+              <label htmlFor="ccn">Credit Card Number:</label>
+              <input maxLength="19" placeholder="xxxx xxxx xxxx xxxx" />{" "}
+            </form>
+          )}
+
           <div id="ord-summary">
             <Link to={`/confirmation`} id="purchase-button">
               <button type="submit" onClick={this.finalPurchase}>
@@ -158,8 +173,9 @@ class Checkout extends Component {
 }
 const mapState = (state) => {
   return {
-    thisCart: state.cart,
-    movies: state.movies,
+    address: state.auth.address,
+    username: state.auth.userName,
+    email: state.auth.email,
   };
 };
 
