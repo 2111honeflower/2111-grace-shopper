@@ -1,26 +1,27 @@
-
 import axios from "axios";
-import history from "../history";
+
+
 
 const TOKEN = "token";
 
 
-/**
- * ACTION TYPES
- */
-
+//ACTION TYPES
 const SET_AUTH = "SET_AUTH";
-const LOG_OUT = "LOG_OUT"
+const LOG_OUT = "LOG_OUT";
 
-/**
- * ACTION CREATORS
- */
 
+//ACTION CREATORS
 const setAuth = (auth) => ({ type: SET_AUTH, auth });
-const logOut = (auth) => ({type: LOG_OUT, auth})
-/**
- * THUNK CREATORS
- */
+const logOut = (auth) => ({ type: LOG_OUT, auth });
+
+
+//THUNKS
+ export const logout = () => {
+  window.localStorage.removeItem(TOKEN);
+  localStorage.clear();
+  return logOut({ auth: {} });
+};
+
 export const me = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
 
@@ -45,7 +46,6 @@ export const authenticateLogin =
     }
   };
 
-
 export const authenticateSignup =
   (userName, password, email, method) => async (dispatch) => {
     try {
@@ -61,23 +61,14 @@ export const authenticateSignup =
     }
   };
 
-export const logout = () => {
-  window.localStorage.removeItem(TOKEN);
-localStorage.clear()
-  return logOut({auth: {}})
 
-};
-
-/**
- * REDUCER
- */
+//REDUCER
 export default function (state = {}, action) {
-
   switch (action.type) {
     case SET_AUTH:
-      return {...state, ...action.auth};
-      case LOG_OUT:
-        return action.auth
+      return { ...state, ...action.auth };
+    case LOG_OUT:
+      return action.auth;
     default:
       return state;
   }

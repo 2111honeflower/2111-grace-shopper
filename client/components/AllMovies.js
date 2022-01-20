@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchMovies, deleteMovie } from "../store/movies";
 
-
 class AllMovies extends React.Component {
   constructor() {
     super();
@@ -12,7 +11,6 @@ class AllMovies extends React.Component {
 
   componentDidMount() {
     this.props.getMovies();
-
   }
 
   handleClick(id, event) {
@@ -25,7 +23,7 @@ class AllMovies extends React.Component {
 
     const movieList = movieData.map((movie) => (
       <div className="all-movies" key={movie.id}>
-        <Link to={`/movies/${movie.id}`} >
+        <Link to={`/movies/${movie.id}`}>
           <h3>{movie.name}</h3>
           <img src={movie.imageUrl} />
         </Link>
@@ -35,7 +33,9 @@ class AllMovies extends React.Component {
     return (
       <main>
         <h2>Movie List</h2>
-        <div id="all-movies">{movieData.length > 1 ? movieList : "No Movies Available"}</div>
+        <div id="all-movies">
+          {movieData.length > 1 ? movieList : "No Movies Available"}
+        </div>
       </main>
     );
   }

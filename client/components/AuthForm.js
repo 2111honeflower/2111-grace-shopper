@@ -10,16 +10,16 @@ const AuthForm = (props) => {
   const { name, displayName, handleSubmit, error } = props;
 
   return (
-    <div>
+    <div id="login-signup">
       <form onSubmit={handleSubmit} name={name}>
-        {name === "signup" &&
+        {name === "signup" && (
           <div>
             <label htmlFor="username">
               <small>Username</small>
             </label>
             <input name="username" type="text" />
           </div>
-        }
+        )}
         <div>
           <label htmlFor="email">
             <small>Email</small>
@@ -33,9 +33,7 @@ const AuthForm = (props) => {
           <input name="password" type="password" />
         </div>
         <div>
-
           <button type="submit">{displayName}</button>
-
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
@@ -43,13 +41,6 @@ const AuthForm = (props) => {
   );
 };
 
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
 const mapLogin = (state) => {
   return {
     name: "login",
@@ -72,7 +63,7 @@ const mapDispatchLogin = (dispatch) => {
       evt.preventDefault();
       const formName = evt.target.name;
       const password = evt.target.password.value;
-      const email = evt.target.email.value
+      const email = evt.target.email.value;
       dispatch(authenticateLogin(password, email, formName));
     },
   };
@@ -85,7 +76,7 @@ const mapDispatchSignup = (dispatch) => {
       const formName = evt.target.name;
       const username = evt.target.username.value;
       const password = evt.target.password.value;
-      const email = evt.target.email.value
+      const email = evt.target.email.value;
       dispatch(authenticateSignup(username, password, email, formName));
     },
   };
