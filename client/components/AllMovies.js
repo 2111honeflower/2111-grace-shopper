@@ -29,13 +29,6 @@ class AllMovies extends React.Component {
           <h3>{movie.name}</h3>
           <img src={movie.imageUrl} />
         </Link>
-        {/* <p>Genre: {movie.genre}</p>
-        <p>Price: ${movie.price}</p>
-        <div>
-          <button type="button" onClick={(e) => this.handleClick(movie.id, e)}>
-            Delete
-          </button>
-        </div> */}
       </div>
     ));
 

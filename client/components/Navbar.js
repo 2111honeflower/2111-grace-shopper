@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../store";
+import history from "../history";
 
 const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
   <div>
@@ -19,7 +20,7 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
       <Link to="/">Browse All</Link>
       {isLoggedIn ? (
         <div>
-          <a href="#" onClick={handleClick}>
+          <a href="/" onClick={handleClick}>
             Logout
           </a>
           <Link to="/cart">
@@ -53,7 +54,9 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     handleClick() {
+
       dispatch(logout());
+
     },
   };
 };

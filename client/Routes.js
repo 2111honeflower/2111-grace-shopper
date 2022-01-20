@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
-import HomePage from "./components/HomePage";
+// import HomePage from "./components/HomePage";
 import { me } from "./store";
 import SingleMovie from "./components/SingleMovie";
 import Cart from "./components/Cart"
@@ -30,27 +30,28 @@ class Routes extends Component {
         {isLoggedIn ? (
 
           <Switch>
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/" exact component={HomePage} />
+            {/* <Route exact path="/home" component={Home} /> */}
+            <Route exact path="/" exact component={Home} />
             <Route exact path="/movies/:id" component={SingleMovie} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/confirmation" component={Confirmation} />
             <Route exact path="/users" component={Users} />
             <Route exact path="/users/:id" component={User} />
-            <Redirect to = "/home" />
+            <Redirect to = "/" />
           </Switch>
 
         ) : (
           <Switch>
-            <Route exact path="/" exact component={HomePage} />
+            {/* <Route exact path="/home" component={Home} /> */}
+            <Route exact path="/" exact component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/movies/:id" component={SingleMovie} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path ="/confirmation" component={Confirmation} />
-            <Redirect to = "/home" /> 
+            <Redirect to = "/" />
           </Switch>
         )}
       </div>
