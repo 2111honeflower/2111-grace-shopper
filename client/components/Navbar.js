@@ -6,7 +6,7 @@ import { logout } from "../store";
 const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
   <div>
     <div id="header">
-      <img src="https://styles.redditmedia.com/t5_2qh3s/styles/communityIcon_oy4mm1w4ron61.jpg?format=pjpg&s=1ec2fcb50762f4d891526740572ec2316ae5c5e6" />
+      <img src="logo.jpeg" />
       <h1>HONEFLOWER MOVIES</h1>
     </div>
     <nav>
